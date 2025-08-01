@@ -40,10 +40,23 @@ MainWindow::MainWindow(QWidget *parent)
     connect(sensorThread,&QThread::finished,sensorThread,&QObject::deleteLater);
 
     //make ui here
-    m_debugUI = new DebugUI(this);
+    m_MainMenuUI = new MainMenuUI(this);
+    m_RFIDUI = new RFIDUI(this);
+    m_DepositUI = new DepositUI(this);
 
     //add ui to stackedWidget
-    ui->mainStackedWidget->addWidget(m_debugUI);
+    ui->mainStackedWidget->addWidget(m_MainMenuUI);
+    ui->mainStackedWidget->addWidget(m_RFIDUI);
+    ui->mainStackedWidget->addWidget(m_DepositUI);
+
+    //connect ChangeWidgetUI
+    connect(m_RFIDUI,&RFIDUI::changeWidget,this,&MainWindow::changePageHandler);
+    connect(m_DepositUI,&DepositUI::changeWidget,this,&MainWindow::changePageHandler);
+    connect(m_MainMenuUI,&MainMenuUI::changeRFID,[=](int idx){
+        m_RFIDUI->setidx(idx);
+        changePageHandler(1);
+    });
+
 
     sensorThread->start();
 }
@@ -53,3 +66,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::changePageHandler(int idx){
+    ui->mainStackedWidget->setCurrentIndex(idx);
+}

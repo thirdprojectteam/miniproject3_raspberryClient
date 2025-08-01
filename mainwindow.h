@@ -2,13 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+//sensor -> 추후 밖으로 처리
 #include <QThread>
 #include "sensorworker.h"
 #include "piezo.h"
 #include "light.h"
-#include "debugui.h"
-#include "distance.h"
-
+//UI
+#include "mainmenuui.h"
+#include "rfidui.h"
+#include "depositui.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,7 +23,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    void changePageHandler(int idx);
 private:
     Ui::MainWindow *ui;
     //QThread Sensor
@@ -32,6 +34,9 @@ private:
     light *m_light;
 
     //UI
-    DebugUI *m_debugUI;
+    MainMenuUI *m_MainMenuUI;
+    RFIDUI *m_RFIDUI;
+    DepositUI *m_DepositUI;
+
 };
 #endif // MAINWINDOW_H

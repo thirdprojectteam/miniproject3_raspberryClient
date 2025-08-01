@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DebugUI</class>
- <widget class="QWidget" name="DebugUI">
+ <class>MainMenuUI</class>
+ <widget class="QWidget" name="MainMenuUI">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -30,7 +30,7 @@
           <string notr="true">font: 32pt &quot;Sans Serif&quot;;</string>
          </property>
          <property name="text">
-          <string>Deposit Money</string>
+          <string>계좌 예금</string>
          </property>
         </widget>
        </item>
@@ -46,7 +46,7 @@
           <string notr="true">font: 32pt &quot;Sans Serif&quot;;</string>
          </property>
          <property name="text">
-          <string>Balance Inquiry</string>
+          <string>계좌 조회</string>
          </property>
         </widget>
        </item>
@@ -62,7 +62,7 @@
           <string notr="true">font: 32pt &quot;Sans Serif&quot;;</string>
          </property>
          <property name="text">
-          <string>Withdraw Money</string>
+          <string>계좌 출금</string>
          </property>
         </widget>
        </item>
@@ -78,7 +78,7 @@
           <string notr="true">font: 32pt &quot;Sans Serif&quot;;</string>
          </property>
          <property name="text">
-          <string>Debug Button</string>
+          <string>계좌 송금</string>
          </property>
         </widget>
        </item>
@@ -96,7 +96,7 @@
         <string notr="true">font: 32pt &quot;Sans Serif&quot;;</string>
        </property>
        <property name="text">
-        <string>QUIT APP</string>
+        <string>종료하기</string>
        </property>
       </widget>
      </item>
