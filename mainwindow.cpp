@@ -54,6 +54,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_DepositUI,&DepositUI::changeWidget,this,&MainWindow::changePageHandler);
     connect(m_MainMenuUI,&MainMenuUI::changeRFID,[=](int idx){
         m_RFIDUI->setidx(idx);
+        m_RFIDUI->rfidThreadStart();
         changePageHandler(1);
     });
 

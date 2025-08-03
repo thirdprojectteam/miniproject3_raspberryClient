@@ -16,7 +16,10 @@ SOURCES += \
     mainwindow.cpp \
     piezo.cpp \
     rfidui.cpp \
-    sensorworker.cpp
+    sensorworker.cpp \
+    CommSPI.cpp \
+    MFRC522.cpp \
+    rf522worker.cpp
 
 HEADERS += \
     depositui.h \
@@ -25,7 +28,10 @@ HEADERS += \
     mainwindow.h \
     piezo.h \
     rfidui.h \
-    sensorworker.h
+    sensorworker.h \
+    Comm.h \
+    MFRC522.h \
+    rf522worker.h
 
 FORMS += \
     depositui.ui \

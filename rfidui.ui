@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,28 +18,127 @@
     <rect>
      <x>90</x>
      <y>40</y>
-     <width>261</width>
-     <height>201</height>
+     <width>571</width>
+     <height>501</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
    </property>
    <property name="text">
-    <string>RFID 사진</string>
+    <string>RFID 설명 애니메이션 사진이나 이런거</string>
    </property>
   </widget>
   <widget class="QPushButton" name="nextButton">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>250</y>
-     <width>80</width>
-     <height>22</height>
+     <x>120</x>
+     <y>510</y>
+     <width>300</width>
+     <height>100</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+   </property>
    <property name="text">
-    <string>next</string>
+    <string>확인</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancelButton">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>510</y>
+     <width>300</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string>이전으로</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="retryButton">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>510</y>
+     <width>300</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string>재시도</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="UIDlabel">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>620</y>
+     <width>200</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string>UID</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="Datalabel">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>690</y>
+     <width>200</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Data</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="UIDlineEdit">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>640</y>
+     <width>300</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="DatalineEdit">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>710</y>
+     <width>300</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>
