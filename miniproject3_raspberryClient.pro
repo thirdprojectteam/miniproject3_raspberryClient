@@ -9,35 +9,45 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    backend.cpp \
+    checkui.cpp \
     depositui.cpp \
     light.cpp \
     main.cpp \
     mainmenuui.cpp \
     mainwindow.cpp \
+    mylineedit.cpp \
     piezo.cpp \
     rfidui.cpp \
+    sendui.cpp \
     sensorworker.cpp \
     CommSPI.cpp \
     MFRC522.cpp \
     rf522worker.cpp
 
 HEADERS += \
+    backend.h \
+    checkui.h \
     depositui.h \
     light.h \
     mainmenuui.h \
     mainwindow.h \
+    mylineedit.h \
     piezo.h \
     rfidui.h \
+    sendui.h \
     sensorworker.h \
     Comm.h \
     MFRC522.h \
     rf522worker.h
 
 FORMS += \
+    checkui.ui \
     depositui.ui \
     mainmenuui.ui \
     mainwindow.ui \
-    rfidui.ui
+    rfidui.ui \
+    sendui.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

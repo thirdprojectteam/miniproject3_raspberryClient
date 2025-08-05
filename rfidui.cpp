@@ -1,5 +1,6 @@
 #include "rfidui.h"
 #include "ui_rfidui.h"
+#include "backend.h"
 
 RFIDUI::RFIDUI(QWidget *parent) :
     QWidget(parent),
@@ -11,7 +12,6 @@ RFIDUI::RFIDUI(QWidget *parent) :
 
     m_rfWorker->moveToThread(rfidThread);
 
-    //connect(m_rfWorker,&RF522Worker::requestRead,m_rfWorker,&RF522Worker::readFromCard,Qt::QueuedConnection);
     //QThread started -> rfWorker 동작해서 읽힐때까지 읽는다.
     connect(rfidThread,&QThread::started,m_rfWorker,&RF522Worker::startLoop);
     //QThread finished -> QThread 끝냈으면 불린다.
@@ -23,6 +23,14 @@ RFIDUI::RFIDUI(QWidget *parent) :
 RFIDUI::~RFIDUI()
 {
     delete ui;
+}
+
+void RFIDUI::init(){
+    ui->UIDlineEdit->clear();
+    ui->DatalineEdit->clear();
+    Backend::getInstance().setBudget(0);
+    Backend::getInstance().setName(QString());
+    Backend::getInstance().setUID(QString());
 }
 
 void RFIDUI::rfidThreadStart(){
@@ -37,19 +45,34 @@ void RFIDUI::rfidThreadEnd(){
 void RFIDUI::onDataRead(QString uid,QString data){
     ui->UIDlineEdit->setText(uid);
     ui->DatalineEdit->setText(data);
-    qDebug()<<uid;
-    qDebug()<<data;
     rfidThreadEnd();
+    //여기서 api send해서 receive받을듯.
 }
 
 void RFIDUI::on_nextButton_clicked()
 {
     //현재는 바로 넘어가지만, 원래는 응답 성공시 처리
-    emit changeWidget(m_idx);
+    if(!ui->UIDlineEdit->text().isEmpty()){
+        Backend::getInstance().setUID(ui->UIDlineEdit->text());
+        Backend::getInstance().setName(ui->DatalineEdit->text());
+        Backend::getInstance().setBudget(100000);
+        //초기화
+        ui->UIDlineEdit->clear();
+        ui->DatalineEdit->clear();
+        emit changeWidget(m_idx);
+    } else {
+        qDebug()<<"no uid";
+    }
 }
 
 void RFIDUI::on_retryButton_clicked()
 {
+    //초기화
+    ui->UIDlineEdit->clear();
+    ui->DatalineEdit->clear();
+    Backend::getInstance().setName(QString());
+    Backend::getInstance().setUID(QString());
+    //재시도
     if(!rfidThread->isRunning()){
         rfidThread->start();
     }
@@ -57,9 +80,16 @@ void RFIDUI::on_retryButton_clicked()
 
 void RFIDUI::on_cancelButton_clicked()
 {
+    //초기화
+    ui->UIDlineEdit->clear();
+    ui->DatalineEdit->clear();
+    Backend::getInstance().setName(QString());
+    Backend::getInstance().setUID(QString());
+    //끄기
     if(rfidThread->isRunning()){
         rfidThread->quit();
     }
+    //돌아가기
     emit changeWidget(0);
 }
 

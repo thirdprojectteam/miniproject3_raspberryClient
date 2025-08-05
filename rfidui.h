@@ -16,6 +16,8 @@ class RFIDUI : public QWidget
 public:
     explicit RFIDUI(QWidget *parent = nullptr);
     ~RFIDUI();
+    //init
+    void init();
     //set idx
     void setidx(int idx) { m_idx=idx;}
     //start thread

@@ -11,6 +11,8 @@
 #include "mainmenuui.h"
 #include "rfidui.h"
 #include "depositui.h"
+#include "checkui.h"
+#include "sendui.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -37,6 +39,7 @@ private:
     MainMenuUI *m_MainMenuUI;
     RFIDUI *m_RFIDUI;
     DepositUI *m_DepositUI;
-
+    CheckUI *m_CheckUI;
+    SendUI *m_SendUI;
 };
 #endif // MAINWINDOW_H

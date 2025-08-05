@@ -1,5 +1,6 @@
 #include "depositui.h"
 #include "ui_depositui.h"
+#include "backend.h"
 
 DepositUI::DepositUI(QWidget *parent) :
     QWidget(parent),
@@ -27,13 +28,30 @@ DepositUI::~DepositUI()
     delete ui;
 }
 
+void DepositUI::init(){
+    //초기 설정.
+    ui->cusNamelineEdit->setText(Backend::getInstance().getName());
+    ui->UIDlineEdit->setText(Backend::getInstance().getUID());
+    ui->budgetlineEdit->setText(QString::number(Backend::getInstance().getBudget()));
+    ui->expectlineEdit->setText(QString::number(Backend::getInstance().getBudget()));
+
+    if(!m_type)
+        ui->StatusLabel->setText("예금입니다. 원하시는 값을 입력해주세요.");
+    else
+        ui->StatusLabel->setText("출금입니다. 원하시는 값을 입력해주세요.");
+    clearDigit();
+}
+
 void DepositUI::on_OKButton_clicked()
 {
+    //원래 여기서 데이터 송수신해서 처리받고 넘어가야됨.
     emit changeWidget(0);
 }
 
 void DepositUI::displayDigit(){
     ui->NumLineEdit->setText(QString::number(DigitRes));
+    if(m_type==0)ui->expectlineEdit->setText(QString::number(Backend::getInstance().getBudget()+DigitRes));
+    else ui->expectlineEdit->setText(QString::number(Backend::getInstance().getBudget()-DigitRes));
 }
 
 void DepositUI::clearDigit(){
@@ -54,5 +72,11 @@ void DepositUI::appendDigit(int num){
         DigitRes+=num;
     }
     displayDigit();
+}
+
+
+void DepositUI::on_CancelButton_clicked()
+{
+    emit changeWidget(0);
 }
 

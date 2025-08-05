@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CheckUI</class>
+ <widget class="QWidget" name="CheckUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1080</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLineEdit" name="UIDlineEdit">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>430</y>
+     <width>300</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 24pt &quot;Sans Serif&quot;;</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="namelineEdit">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>550</y>
+     <width>300</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 24pt &quot;Sans Serif&quot;;</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="budgetlineEdit">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>680</y>
+     <width>300</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 24pt &quot;Sans Serif&quot;;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="UIDlabel">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>430</y>
+     <width>200</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 24pt &quot;Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string>계좌번호</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="namelabel">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>550</y>
+     <width>200</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 24pt &quot;Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string>예금주명</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="budgetlabel">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>680</y>
+     <width>200</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 24pt &quot;Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string>잔고</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>20</y>
+     <width>1061</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string>계좌 조회입니다. 원하시는 항목을 선택해주세요</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="DepositButton">
+   <property name="geometry">
+    <rect>
+     <x>1000</x>
+     <y>110</y>
+     <width>700</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string>예금</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="WithdrawpushButton">
+   <property name="geometry">
+    <rect>
+     <x>1000</x>
+     <y>350</y>
+     <width>700</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string>출금</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="SendButton">
+   <property name="geometry">
+    <rect>
+     <x>1000</x>
+     <y>590</y>
+     <width>700</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string>송금</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="QuitButton">
+   <property name="geometry">
+    <rect>
+     <x>1000</x>
+     <y>840</y>
+     <width>700</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+   </property>
+   <property name="text">
+    <string>취소</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

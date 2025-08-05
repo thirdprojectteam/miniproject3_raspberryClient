@@ -23,6 +23,12 @@ private slots:
 
     void on_DepositButton_clicked();
 
+    void on_WithdrawButton_clicked();
+
+    void on_BalanceButton_clicked();
+
+    void on_SendButton_clicked();
+
 private:
     Ui::MainMenuUI *ui;
 };

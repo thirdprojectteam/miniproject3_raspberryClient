@@ -15,6 +15,9 @@ public:
     explicit DepositUI(QWidget *parent = nullptr);
     ~DepositUI();
     void appendDigit(int i);
+    //덧셈기 뺄셈기 변경
+    void setType(bool type){m_type=type;}
+    void init();
     void clearDigit();
     void displayDigit();
 
@@ -24,9 +27,12 @@ signals:
 private slots:
     void on_OKButton_clicked();
 
+    void on_CancelButton_clicked();
+
 private:
     Ui::DepositUI *ui;
     long long DigitRes;
+    bool m_type;
 };
 
 #endif // DEPOSITUI_H
