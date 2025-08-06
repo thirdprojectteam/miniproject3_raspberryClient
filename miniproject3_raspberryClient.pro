@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -23,7 +23,8 @@ SOURCES += \
     sensorworker.cpp \
     CommSPI.cpp \
     MFRC522.cpp \
-    rf522worker.cpp
+    rf522worker.cpp \
+    webclient.cpp
 
 HEADERS += \
     backend.h \
@@ -39,7 +40,8 @@ HEADERS += \
     sensorworker.h \
     Comm.h \
     MFRC522.h \
-    rf522worker.h
+    rf522worker.h \
+    webclient.h
 
 FORMS += \
     checkui.ui \

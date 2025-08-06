@@ -1,6 +1,7 @@
 #include "rfidui.h"
 #include "ui_rfidui.h"
 #include "backend.h"
+#include "webclient.h"
 
 RFIDUI::RFIDUI(QWidget *parent) :
     QWidget(parent),
@@ -45,8 +46,11 @@ void RFIDUI::rfidThreadEnd(){
 void RFIDUI::onDataRead(QString uid,QString data){
     ui->UIDlineEdit->setText(uid);
     ui->DatalineEdit->setText(data);
+    Backend::getInstance().setUID(ui->UIDlineEdit->text());
+    Backend::getInstance().setName(ui->DatalineEdit->text());
     rfidThreadEnd();
     //여기서 api send해서 receive받을듯.
+    WebClient::getInstance().RequestGet();
 }
 
 void RFIDUI::on_nextButton_clicked()

@@ -3,6 +3,8 @@
 #include "light.h"
 #include "backend.h"
 
+#include "webclient.h"
+
 #include <QScreen>          //for primaryScreenSize
 
 MainWindow::MainWindow(QWidget *parent)
@@ -15,6 +17,12 @@ MainWindow::MainWindow(QWidget *parent)
     QSize screenSize = QGuiApplication::primaryScreen()->availableGeometry().size();
     this->resize(screenSize);
     this->move(0,0);
+    qDebug()<<"here";
+    //통신 http 시작
+    if(!WebClient::getInstance().initServer()){
+        return;
+    }
+
     //make worker and make qthread -> move to thread
     m_piezo = new Piezo(this);
     worker = new SensorWorker();
