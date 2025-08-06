@@ -55,6 +55,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_DepositUI = new DepositUI(this);
     m_CheckUI = new CheckUI(this);
     m_SendUI = new SendUI(this);
+    m_FinishUI = new FinishUI(this);
 
     //add ui to stackedWidget
     ui->mainStackedWidget->addWidget(m_MainMenuUI);  // 0
@@ -62,11 +63,21 @@ MainWindow::MainWindow(QWidget *parent)
     ui->mainStackedWidget->addWidget(m_DepositUI);   // 2
     ui->mainStackedWidget->addWidget(m_CheckUI);     // 4(3)
     ui->mainStackedWidget->addWidget(m_SendUI);      // 5(4)
+    ui->mainStackedWidget->addWidget(m_FinishUI);    // 6(5)
 
     //connect ChangeWidgetUI
+    connect(&WebClient::getInstance(),&WebClient::onGetSuccess,this,[=](){
+        if(ui->mainStackedWidget->currentIndex()==1){
+            changePageHandler(m_RFIDUI->getidx());
+        } else {
+            changePageHandler(6);
+        }
+    });
     connect(m_RFIDUI,&RFIDUI::changeWidget,this,&MainWindow::changePageHandler);
     connect(m_DepositUI,&DepositUI::changeWidget,this,&MainWindow::changePageHandler);
     connect(m_CheckUI,&CheckUI::changeWidget,this,&MainWindow::changePageHandler);
+    connect(m_SendUI,&SendUI::changeWidget,this,&MainWindow::changePageHandler);
+    connect(m_FinishUI,&FinishUI::changeWidget,this,&MainWindow::changePageHandler);
     connect(m_MainMenuUI,&MainMenuUI::changeRFID,[=](int idx){
         m_RFIDUI->setidx(idx);
         m_RFIDUI->rfidThreadStart();
@@ -83,7 +94,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::changePageHandler(int idx){
     if(idx==0){
-
+        //nothing happen here backend clear all?
     }else if(idx ==1){
         m_RFIDUI->init();
     }else if(idx ==2){
@@ -99,6 +110,9 @@ void MainWindow::changePageHandler(int idx){
     }else if(idx==5){
         idx=4;
         m_SendUI->init();
+    }else if(idx==6){
+        idx=5;
+        m_FinishUI->init();
     }
     ui->mainStackedWidget->setCurrentIndex(idx);
 }

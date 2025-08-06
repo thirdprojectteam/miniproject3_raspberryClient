@@ -53,22 +53,6 @@ void RFIDUI::onDataRead(QString uid,QString data){
     WebClient::getInstance().RequestGet();
 }
 
-void RFIDUI::on_nextButton_clicked()
-{
-    //현재는 바로 넘어가지만, 원래는 응답 성공시 처리
-    if(!ui->UIDlineEdit->text().isEmpty()){
-        Backend::getInstance().setUID(ui->UIDlineEdit->text());
-        Backend::getInstance().setName(ui->DatalineEdit->text());
-        Backend::getInstance().setBudget(100000);
-        //초기화
-        ui->UIDlineEdit->clear();
-        ui->DatalineEdit->clear();
-        emit changeWidget(m_idx);
-    } else {
-        qDebug()<<"no uid";
-    }
-}
-
 void RFIDUI::on_retryButton_clicked()
 {
     //초기화

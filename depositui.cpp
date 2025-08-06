@@ -1,6 +1,7 @@
 #include "depositui.h"
 #include "ui_depositui.h"
 #include "backend.h"
+#include "webclient.h"
 
 DepositUI::DepositUI(QWidget *parent) :
     QWidget(parent),
@@ -41,17 +42,21 @@ void DepositUI::init(){
         ui->StatusLabel->setText("출금입니다. 원하시는 값을 입력해주세요.");
     clearDigit();
 }
-
+//send put request
 void DepositUI::on_OKButton_clicked()
 {
-    //원래 여기서 데이터 송수신해서 처리받고 넘어가야됨.
-    emit changeWidget(0);
+    if(m_type==0)
+        WebClient::getInstance().RequestPut(DigitRes,"Deposit");
+    else if(m_type==1)
+        WebClient::getInstance().RequestPut(DigitRes,"Withdraw");
 }
 
 void DepositUI::displayDigit(){
     ui->NumLineEdit->setText(QString::number(DigitRes));
-    if(m_type==0)ui->expectlineEdit->setText(QString::number(Backend::getInstance().getBudget()+DigitRes));
-    else ui->expectlineEdit->setText(QString::number(Backend::getInstance().getBudget()-DigitRes));
+    if(m_type==0)
+        ui->expectlineEdit->setText(QString::number(Backend::getInstance().getBudget()+DigitRes));
+    else
+        ui->expectlineEdit->setText(QString::number(Backend::getInstance().getBudget()-DigitRes));
 }
 
 void DepositUI::clearDigit(){

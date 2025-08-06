@@ -12,6 +12,7 @@ SOURCES += \
     backend.cpp \
     checkui.cpp \
     depositui.cpp \
+    finishui.cpp \
     light.cpp \
     main.cpp \
     mainmenuui.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     backend.h \
     checkui.h \
     depositui.h \
+    finishui.h \
     light.h \
     mainmenuui.h \
     mainwindow.h \
@@ -46,6 +48,7 @@ HEADERS += \
 FORMS += \
     checkui.ui \
     depositui.ui \
+    finishui.ui \
     mainmenuui.ui \
     mainwindow.ui \
     rfidui.ui \

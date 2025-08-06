@@ -1,5 +1,7 @@
 #include "sendui.h"
 #include "ui_sendui.h"
+#include "webclient.h"
+#include "backend.h"
 
 SendUI::SendUI(QWidget *parent) :
     QWidget(parent),
@@ -25,11 +27,8 @@ SendUI::SendUI(QWidget *parent) :
     connect(ui->budgetlineEdit,&myLineEdit::clicked,[=](){
         curLineEdit = ui->budgetlineEdit;
     });
-    connect(ui->namelineEdit,&myLineEdit::clicked,[=](){
-        curLineEdit = ui->namelineEdit;
-    });
-    connect(ui->UIDlineEdit,&myLineEdit::clicked,[=](){
-        curLineEdit = ui->UIDlineEdit;
+    connect(ui->targetUIDlineEdit,&myLineEdit::clicked,[=](){
+        curLineEdit = ui->targetUIDlineEdit;
     });
 }
 
@@ -39,10 +38,12 @@ SendUI::~SendUI()
 }
 
 void SendUI::init(){
-    ui->UIDlineEdit->clear();
-    ui->namelineEdit->clear();
+    ui->targetUIDlineEdit->clear();
     ui->budgetlineEdit->clear();
-    curLineEdit=ui->UIDlineEdit;
+    ui->mynamelineEdit->setText(Backend::getInstance().getName());
+    ui->myUIDlineEdit->setText(Backend::getInstance().getUID());
+    ui->mybudgetlineEdit->setText(QString::number(Backend::getInstance().getBudget()));
+    curLineEdit=ui->targetUIDlineEdit;
 }
 
 void SendUI::clearDigit(){
@@ -61,3 +62,14 @@ void SendUI::eraseDigit(){
         curLineEdit->setText(curText);
     }
 }
+
+void SendUI::on_OKButton_clicked()
+{
+    WebClient::getInstance().RequestPut(ui->budgetlineEdit->text().toLongLong(),"Send",ui->targetUIDlineEdit->text());
+}
+
+void SendUI::on_CancelButton_clicked()
+{
+    emit changeWidget(0);
+}
+

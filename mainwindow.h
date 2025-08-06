@@ -13,6 +13,7 @@
 #include "depositui.h"
 #include "checkui.h"
 #include "sendui.h"
+#include "finishui.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -41,5 +42,6 @@ private:
     DepositUI *m_DepositUI;
     CheckUI *m_CheckUI;
     SendUI *m_SendUI;
+    FinishUI *m_FinishUI;
 };
 #endif // MAINWINDOW_H

@@ -29,26 +29,10 @@
     <string>RFID 설명 애니메이션 사진이나 이런거</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="nextButton">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>510</y>
-     <width>300</width>
-     <height>100</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
-   </property>
-   <property name="text">
-    <string>확인</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="cancelButton">
    <property name="geometry">
     <rect>
-     <x>790</x>
+     <x>550</x>
      <y>510</y>
      <width>300</width>
      <height>100</height>
@@ -64,7 +48,7 @@
   <widget class="QPushButton" name="retryButton">
    <property name="geometry">
     <rect>
-     <x>450</x>
+     <x>210</x>
      <y>510</y>
      <width>300</width>
      <height>100</height>

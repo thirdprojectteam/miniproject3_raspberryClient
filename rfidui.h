@@ -20,6 +20,7 @@ public:
     void init();
     //set idx
     void setidx(int idx) { m_idx=idx;}
+    int getidx(){return m_idx;}
     //start thread
     void rfidThreadStart();
 
@@ -30,8 +31,6 @@ signals:
     void changeWidget(int index);
 
 private slots:
-    void on_nextButton_clicked();
-
     void on_retryButton_clicked();
 
     void on_cancelButton_clicked();

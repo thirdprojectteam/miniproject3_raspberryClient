@@ -66,7 +66,7 @@ void WebClient::RequestPost(int idx)
     networkManager->post(request,postData);
 }
 //예금 출금 송금
-void WebClient::RequestPut(int amount,QString action,QString targetUID){
+void WebClient::RequestPut(long long amount,QString action,QString targetUID){
     qDebug()<<"request Put 잔고";
     QUrl url(SERVER_PUT_URL);
     QNetworkRequest request(url);
@@ -76,7 +76,7 @@ void WebClient::RequestPut(int amount,QString action,QString targetUID){
     members["UID"] = Backend::getInstance().getUID();
     members["name"] = Backend::getInstance().getName();
     members["targetUID"] = targetUID;
-    members["amount"] = amount;
+    members["amount"] = QString::number(amount);
     members["action"] = action;
     obj["data"] = members;
     QJsonDocument doc(obj);
@@ -114,41 +114,37 @@ void WebClient::onNetworkReplyFinished(QNetworkReply *reply)
                 QJsonObject jsonObject = jsonDoc.object();
                 if(jsonObject["data"].isObject()&&(!jsonObject.isEmpty())){
                     QJsonObject obj = jsonObject["data"].toObject();
-                    Backend::getInstance().setBudget((long long)obj["budget"].toInt());
+                    //emit해서 rfid에 알려서 setBudget한후 넘어가야한다.
+                    if(jsonObject["success"].toBool()){
+                        Backend::getInstance().setBudget(obj["budget"].toVariant().toLongLong());
+                        emit onGetSuccess();
+                    } else {//실패시 처리
+                        emit onFailure();
+                    }
                 }
-                qDebug() << "Client received JSON object:" << jsonObject;
             } else {
-                qDebug("응답이 유효한 JSON 객체r나 배열이 아닙니다.");
+                qDebug("응답이 유효한 JSON 객체나 배열이 아닙니다.");
             }
-        } else if(reply->operation()==QNetworkAccessManager::PostOperation){
+        } else if(reply->operation()==QNetworkAccessManager::PostOperation){//로그 데이터 operation
             qDebug()<<"post operation";
+            //qDebug() << "Client received JSON object:" << jsonObject;
 
-        } else if(reply->operation()==QNetworkAccessManager::PutOperation){
+        } else if(reply->operation()==QNetworkAccessManager::PutOperation){//수정 operation
             qDebug()<<"put operation";
-
+            if (jsonDoc.isObject()) {
+                QJsonObject jsonObject = jsonDoc.object();
+                //put 성공 -> budget 최신화 get 불러야한다.
+                if(jsonObject["success"].toBool()){
+                    RequestGet();
+                } else {//실패시 처리
+                    emit onFailure();
+                }
+            } else {
+                qDebug("응답이 유효한 JSON 객체나 배열이 아닙니다.");
+            }
         }
     }
 
-//    // 3. JSON 파싱
-//    QJsonParseError parseError;
-//    QJsonDocument jsonDoc = QJsonDocument::fromJson(responseData, &parseError);
-
-//    if (parseError.error != QJsonParseError::NoError) {
-//        qWarning() << "JSON parse error:" << parseError.errorString();
-//    } else {
-//        if (jsonDoc.isObject()) {
-//            QJsonObject jsonObject = jsonDoc.object();
-//            qDebug() << "Client received JSON object:" << jsonObject;
-//        } else if (jsonDoc.isArray()) {
-//            QJsonArray jsonArray = jsonDoc.array();
-//            // JSON 배열을 보기 좋게 포매팅하여 표시
-//            qDebug() << "Client received JSON array:" << jsonArray;
-//        } else {
-//            qDebug("응답이 유효한 JSON 객체나 배열이 아닙니다.");
-//        }
-//    }
-
-    // 4. QNetworkReply 객체 메모리 해제 (매우 중요!)
     reply->deleteLater();
 }
 

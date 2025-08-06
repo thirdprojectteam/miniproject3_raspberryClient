@@ -20,6 +20,13 @@ public:
     void clearDigit();
     void eraseDigit();
     void init();
+signals:
+    void changeWidget(int idx);
+
+private slots:
+    void on_OKButton_clicked();
+
+    void on_CancelButton_clicked();
 
 private:
     Ui::SendUI *ui;
