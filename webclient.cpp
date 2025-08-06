@@ -42,7 +42,7 @@ void WebClient::RequestGet()
     networkManager->get(request);
 }
 
-//하드코딩 되어있습니다. 현재시간, 센서타입 넣어줘야함.
+//현재시간, 센서타입 넣어줘야함.
 void WebClient::RequestPost(int idx)
 {
     qDebug()<<"request Post 잔고";
@@ -54,7 +54,7 @@ void WebClient::RequestPost(int idx)
 
     QJsonObject obj;
     QJsonObject members;
-    members["SensorType"] = idx;
+    members["SensorType"] = idx; //0 = rfid, 1 = 부저
     members["time"] = now;
     members["clientName"] = Backend::getInstance().getName();
     obj["data"] = members;

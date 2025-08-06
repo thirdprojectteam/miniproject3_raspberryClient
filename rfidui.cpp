@@ -49,7 +49,8 @@ void RFIDUI::onDataRead(QString uid,QString data){
     Backend::getInstance().setUID(ui->UIDlineEdit->text());
     Backend::getInstance().setName(ui->DatalineEdit->text());
     rfidThreadEnd();
-    //여기서 api send해서 receive받을듯.
+    //여기서 api send해서 receive받을듯. sensorlog, 잔고조회
+    WebClient::getInstance().RequestPost(0);
     WebClient::getInstance().RequestGet();
 }
 

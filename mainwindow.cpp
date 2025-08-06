@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     QSize screenSize = QGuiApplication::primaryScreen()->availableGeometry().size();
     this->resize(screenSize);
     this->move(0,0);
-    qDebug()<<"here";
+
     //통신 http 시작
     if(!WebClient::getInstance().initServer()){
         return;

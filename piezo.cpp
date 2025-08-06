@@ -1,6 +1,7 @@
 #include "piezo.h"
 #define piezo_pin 17
 #include <QDebug>
+#include "webclient.h"
 
 Piezo::Piezo(QObject *parent)
     :QObject(parent),buzzing(false)
@@ -27,6 +28,7 @@ void Piezo::turnOnBuzzerOnce(){
             gpiod_line_release(m_piezo);
             qDebug()<<"singleshot";
             buzzing = false;
+            WebClient::getInstance().RequestPost(1);
         });
     }
 }
