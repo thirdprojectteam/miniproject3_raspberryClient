@@ -1,9 +1,9 @@
 #ifndef LIGHT_H
 #define LIGHT_H
 
-#include <gpiod.h>
+#include <QTimer>
 #include <QObject>
-#include <QDebug>
+#include <gpiod.h>
 
 class light:public QObject
 {
@@ -11,7 +11,10 @@ class light:public QObject
 public:
     explicit light(QObject *parent = nullptr);
     ~light();
+    void turnOnLightOnce();
+
 private:
+    bool lighton;
     gpiod_chip *m_chip;
     gpiod_line *m_gpio;
 };

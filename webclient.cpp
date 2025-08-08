@@ -22,10 +22,10 @@ bool WebClient::initServer(){
     return true;
 }
 
-// "요청 보내기" 버튼 클릭 시 호출될 슬롯 -> 이게 선택문이네
+// "요청 보내기" 버튼 클릭 시 호출될 슬롯
 void WebClient::RequestGet()
 {
-    qDebug()<<"request Get 잔고";
+    //현재 UID, 이름 가져온다.
     QString uid = Backend::getInstance().getUID();
     QString name = Backend::getInstance().getName();
 
@@ -36,8 +36,9 @@ void WebClient::RequestGet()
     query.addQueryItem("name",name);
     url.setQuery(query);
 
+    //request문 URL이름으로 만들기.
     QNetworkRequest request(url);
-    qDebug()<<url;
+
     // GET 요청 보내기
     networkManager->get(request);
 }
@@ -45,11 +46,11 @@ void WebClient::RequestGet()
 //현재시간, 센서타입 넣어줘야함.
 void WebClient::RequestPost(int idx)
 {
-    qDebug()<<"request Post 잔고";
     // 요청할 URL 생성 (웹서버의 /api/users 경로)
     QUrl url(SERVER_POST_URL);
     QNetworkRequest request(url);
 
+    //현재 시간 처리
     auto now = QDateTime::currentDateTime().toString();
 
     QJsonObject obj;
@@ -61,13 +62,14 @@ void WebClient::RequestPost(int idx)
     QJsonDocument doc(obj);
     QByteArray postData = doc.toJson(QJsonDocument::Compact);
 
+    //type header붙이기.
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
     // Post 요청 보내기
     networkManager->post(request,postData);
 }
-//예금 출금 송금
+//예금 출금 송금은 put으로 처리한다.
 void WebClient::RequestPut(long long amount,QString action,QString targetUID){
-    qDebug()<<"request Put 잔고";
     QUrl url(SERVER_PUT_URL);
     QNetworkRequest request(url);
 
@@ -109,7 +111,7 @@ void WebClient::onNetworkReplyFinished(QNetworkReply *reply)
         qWarning() << "JSON parse error:" << parseError.errorString();
     } else {
         if(reply->operation()==QNetworkAccessManager::GetOperation){
-            qDebug()<<"get operation";
+            //qDebug()<<"get operation";
             if (jsonDoc.isObject()) {
                 QJsonObject jsonObject = jsonDoc.object();
                 if(jsonObject["data"].isObject()&&(!jsonObject.isEmpty())){
@@ -126,11 +128,10 @@ void WebClient::onNetworkReplyFinished(QNetworkReply *reply)
                 qDebug("응답이 유효한 JSON 객체나 배열이 아닙니다.");
             }
         } else if(reply->operation()==QNetworkAccessManager::PostOperation){//로그 데이터 operation
-            qDebug()<<"post operation";
-            //qDebug() << "Client received JSON object:" << jsonObject;
-
+            //log 저장은 성공하든 실패하든 처리 없다.
+            //qDebug()<<"post operation";
         } else if(reply->operation()==QNetworkAccessManager::PutOperation){//수정 operation
-            qDebug()<<"put operation";
+            //qDebug()<<"put operation";
             if (jsonDoc.isObject()) {
                 QJsonObject jsonObject = jsonDoc.object();
                 //put 성공 -> budget 최신화 get 불러야한다.
@@ -144,7 +145,6 @@ void WebClient::onNetworkReplyFinished(QNetworkReply *reply)
             }
         }
     }
-
     reply->deleteLater();
 }
 

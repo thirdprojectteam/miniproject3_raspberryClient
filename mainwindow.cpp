@@ -1,10 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "light.h"
 #include "backend.h"
-
 #include "webclient.h"
-
 #include <QScreen>          //for primaryScreenSize
 
 MainWindow::MainWindow(QWidget *parent)
@@ -23,8 +20,11 @@ MainWindow::MainWindow(QWidget *parent)
         return;
     }
 
-    //make worker and make qthread -> move to thread
+    //피에조 부처와 점등 만들기
     m_piezo = new Piezo(this);
+    m_light = new light(this);
+
+    //초음파는 별개의 스레드로 동작
     worker = new SensorWorker();
     sensorThread = new QThread(this);
     worker->moveToThread(sensorThread);
@@ -69,6 +69,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&WebClient::getInstance(),&WebClient::onGetSuccess,this,[=](){
         if(ui->mainStackedWidget->currentIndex()==1){
             changePageHandler(m_RFIDUI->getidx());
+            m_light->turnOnLightOnce();
         } else {
             changePageHandler(6);
         }

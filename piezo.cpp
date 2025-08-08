@@ -1,7 +1,8 @@
 #include "piezo.h"
-#define piezo_pin 17
 #include <QDebug>
 #include "webclient.h"
+
+#define piezo_pin 17
 
 Piezo::Piezo(QObject *parent)
     :QObject(parent),buzzing(false)
