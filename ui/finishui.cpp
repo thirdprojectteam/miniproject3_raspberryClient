@@ -1,6 +1,6 @@
 #include "finishui.h"
 #include "ui_finishui.h"
-#include "backend.h"
+#include "mycore/backend.h"
 
 FinishUI::FinishUI(QWidget *parent) :
     QWidget(parent),

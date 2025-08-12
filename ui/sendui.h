@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QLineEdit>
-#include "mylineedit.h"
+#include "senlib/mylineedit.h"
 
 namespace Ui {
 class SendUI;

@@ -4,9 +4,9 @@
 #include <QMainWindow>
 //sensor -> 추후 밖으로 처리
 #include <QThread>
-#include "sensorworker.h"
-#include "piezo.h"
-#include "light.h"
+#include "mycore/sensorworker.h"
+#include "senlib/piezo.h"
+#include "senlib/light.h"
 //UI
 #include "mainmenuui.h"
 #include "rfidui.h"

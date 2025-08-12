@@ -1,7 +1,7 @@
 #include "depositui.h"
 #include "ui_depositui.h"
-#include "backend.h"
-#include "webclient.h"
+#include "mycore/backend.h"
+#include "mycore/webclient.h"
 
 DepositUI::DepositUI(QWidget *parent) :
     QWidget(parent),

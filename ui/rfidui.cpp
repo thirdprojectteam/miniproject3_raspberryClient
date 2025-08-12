@@ -1,7 +1,7 @@
 #include "rfidui.h"
 #include "ui_rfidui.h"
-#include "backend.h"
-#include "webclient.h"
+#include "mycore/backend.h"
+#include "mycore/webclient.h"
 
 RFIDUI::RFIDUI(QWidget *parent) :
     QWidget(parent),

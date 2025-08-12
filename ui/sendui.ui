@@ -641,7 +641,7 @@
   <customwidget>
    <class>myLineEdit</class>
    <extends>QLineEdit</extends>
-   <header>mylineedit.h</header>
+   <header>senlib/mylineedit.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

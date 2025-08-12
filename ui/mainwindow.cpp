@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "backend.h"
-#include "webclient.h"
+#include "mycore/backend.h"
+#include "mycore/webclient.h"
 #include <QScreen>          //for primaryScreenSize
 
 MainWindow::MainWindow(QWidget *parent)

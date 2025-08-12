@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QTimer>
 #include <QString>
-#include <MFRC522.h>
+#include <senlib/MFRC522.h>
 
 class RF522Worker:public QObject
 {

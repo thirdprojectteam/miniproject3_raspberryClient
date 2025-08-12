@@ -2,7 +2,7 @@
 #define RFIDUI_H
 
 #include <QWidget>
-#include "rf522worker.h"
+#include "mycore/rf522worker.h"
 #include <QThread>
 
 namespace Ui {

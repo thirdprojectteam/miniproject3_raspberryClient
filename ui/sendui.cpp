@@ -1,7 +1,7 @@
 #include "sendui.h"
 #include "ui_sendui.h"
-#include "webclient.h"
-#include "backend.h"
+#include "mycore/webclient.h"
+#include "mycore/backend.h"
 
 SendUI::SendUI(QWidget *parent) :
     QWidget(parent),
