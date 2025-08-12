@@ -8,7 +8,7 @@
 #include <QNetworkRequest> // 네트워크 요청 객체
 #include <QJsonArray>
 #include <QJsonDocument>
-#include <QDateTime>
+#include <QDate>
 #include <QUrlQuery>
 
 bool WebClient::initServer(){
@@ -38,7 +38,7 @@ void WebClient::RequestGet()
 
     //request문 URL이름으로 만들기.
     QNetworkRequest request(url);
-
+    qDebug()<<"get request";
     // GET 요청 보내기
     networkManager->get(request);
 }
@@ -51,7 +51,7 @@ void WebClient::RequestPost(int idx)
     QNetworkRequest request(url);
 
     //현재 시간 처리
-    auto now = QDateTime::currentDateTime().toString();
+    auto now = QDate::currentDate().toString(Qt::ISODate);
 
     QJsonObject obj;
     QJsonObject members;
@@ -112,18 +112,16 @@ void WebClient::onNetworkReplyFinished(QNetworkReply *reply)
     } else {
         if(reply->operation()==QNetworkAccessManager::GetOperation){
             //qDebug()<<"get operation";
+            qDebug()<<jsonDoc;
             if (jsonDoc.isObject()) {
                 QJsonObject jsonObject = jsonDoc.object();
-                if(jsonObject["data"].isObject()&&(!jsonObject.isEmpty())){
-                    QJsonObject obj = jsonObject["data"].toObject();
-                    //emit해서 rfid에 알려서 setBudget한후 넘어가야한다.
-                    if(jsonObject["success"].toBool()){
-                        Backend::getInstance().setBudget(obj["budget"].toVariant().toLongLong());
+                    if(jsonObject["success"].toInt()){
+                        Backend::getInstance().setBudget(jsonObject["balance"].toVariant().toLongLong());
                         emit onGetSuccess();
                     } else {//실패시 처리
                         emit onFailure();
                     }
-                }
+                //}
             } else {
                 qDebug("응답이 유효한 JSON 객체나 배열이 아닙니다.");
             }
