@@ -14,6 +14,8 @@
 #include "checkui.h"
 #include "sendui.h"
 #include "finishui.h"
+//tcp server
+#include "tcp_server.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -43,5 +45,7 @@ private:
     CheckUI *m_CheckUI;
     SendUI *m_SendUI;
     FinishUI *m_FinishUI;
+    //
+    TcpServer *m_TcpServer;
 };
 #endif // MAINWINDOW_H

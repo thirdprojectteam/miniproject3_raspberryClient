@@ -25,7 +25,8 @@ SOURCES += \
     senlib/CommSPI.cpp \
     senlib/MFRC522.cpp \
     mycore/rf522worker.cpp \
-    mycore/webclient.cpp
+    mycore/webclient.cpp \
+    ui/tcp_server.cpp
 
 HEADERS += \
     mycore/backend.h \
@@ -43,7 +44,8 @@ HEADERS += \
     senlib/Comm.h \
     senlib/MFRC522.h \
     mycore/rf522worker.h \
-    mycore/webclient.h
+    mycore/webclient.h \
+    ui/tcp_server.h
 
 FORMS += \
     ui/checkui.ui \
@@ -61,3 +63,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 # using library
 LIBS += -lgpiod
+
+RESOURCES += \
+    image.qrc

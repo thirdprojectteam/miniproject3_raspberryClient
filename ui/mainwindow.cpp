@@ -19,6 +19,9 @@ MainWindow::MainWindow(QWidget *parent)
     if(!WebClient::getInstance().initServer()){
         return;
     }
+    //얼굴인식
+    quint16 port = 9000;
+    m_TcpServer = new TcpServer(port);
 
     //피에조 부처와 점등 만들기
     m_piezo = new Piezo(this);

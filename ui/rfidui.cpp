@@ -8,6 +8,9 @@ RFIDUI::RFIDUI(QWidget *parent) :
     ui(new Ui::RFIDUI)
 {
     ui->setupUi(this);
+    QPixmap RFIDPixmap(":/image/rfid.jpg");
+    ui->RFIDlabel->setPixmap(RFIDPixmap);
+    ui->RFIDlabel->setScaledContents(true);
     m_rfWorker = new RF522Worker();
     rfidThread = new QThread(this);
 
