@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(12, 58, 152);</string>
+  </property>
   <widget class="QLabel" name="RFIDlabel">
    <property name="geometry">
     <rect>
@@ -32,14 +35,21 @@
   <widget class="QPushButton" name="cancelButton">
    <property name="geometry">
     <rect>
-     <x>940</x>
-     <y>529</y>
-     <width>491</width>
-     <height>231</height>
+     <x>1190</x>
+     <y>750</y>
+     <width>381</width>
+     <height>181</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>48</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">font: 52pt &quot;Sans Serif&quot;;</string>
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(1, 180, 245);</string>
    </property>
    <property name="text">
     <string>이전으로</string>
@@ -48,14 +58,21 @@
   <widget class="QPushButton" name="retryButton">
    <property name="geometry">
     <rect>
-     <x>429</x>
-     <y>529</y>
-     <width>471</width>
-     <height>231</height>
+     <x>1190</x>
+     <y>550</y>
+     <width>381</width>
+     <height>181</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>48</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">font: 52pt &quot;Sans Serif&quot;;</string>
+    <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(1, 180, 245);</string>
    </property>
    <property name="text">
     <string>재시도</string>
@@ -64,46 +81,59 @@
   <widget class="QLabel" name="UIDlabel">
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>770</y>
+     <x>410</x>
+     <y>610</y>
      <width>200</width>
      <height>80</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>36</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+    <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>UID</string>
+    <string>고유번호</string>
    </property>
   </widget>
   <widget class="QLabel" name="Datalabel">
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>840</y>
+     <x>410</x>
+     <y>750</y>
      <width>200</width>
      <height>80</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>36</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="styleSheet">
-    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+    <string notr="true">color: rgb(255, 255, 255);</string>
    </property>
    <property name="text">
-    <string>NAME</string>
+    <string>이름</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="UIDlineEdit">
    <property name="geometry">
     <rect>
-     <x>710</x>
-     <y>790</y>
+     <x>650</x>
+     <y>630</y>
      <width>431</width>
      <height>50</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+    <string notr="true">font: 36pt &quot;Sans Serif&quot;;
+background-color: rgb(255, 255, 255);</string>
    </property>
    <property name="readOnly">
     <bool>true</bool>
@@ -112,14 +142,15 @@
   <widget class="QLineEdit" name="DatalineEdit">
    <property name="geometry">
     <rect>
-     <x>710</x>
-     <y>860</y>
+     <x>650</x>
+     <y>770</y>
      <width>431</width>
      <height>50</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 36pt &quot;Sans Serif&quot;;</string>
+    <string notr="true">font: 36pt &quot;Sans Serif&quot;;
+background-color: rgb(255, 255, 255);</string>
    </property>
    <property name="readOnly">
     <bool>true</bool>

@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(12, 58, 152);</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -26,8 +29,15 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="font">
+          <font>
+           <pointsize>95</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">font: 32pt &quot;Sans Serif&quot;;</string>
+          <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(1, 180, 245);</string>
          </property>
          <property name="text">
           <string>계좌 예금</string>
@@ -42,8 +52,15 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="font">
+          <font>
+           <pointsize>95</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">font: 32pt &quot;Sans Serif&quot;;</string>
+          <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(1, 180, 245);</string>
          </property>
          <property name="text">
           <string>계좌 조회</string>
@@ -58,8 +75,15 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="font">
+          <font>
+           <pointsize>95</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">font: 32pt &quot;Sans Serif&quot;;</string>
+          <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(1, 180, 245);</string>
          </property>
          <property name="text">
           <string>계좌 출금</string>
@@ -74,8 +98,15 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="font">
+          <font>
+           <pointsize>95</pointsize>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="styleSheet">
-          <string notr="true">font: 32pt &quot;Sans Serif&quot;;</string>
+          <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(1, 180, 245);</string>
          </property>
          <property name="text">
           <string>계좌 송금</string>
@@ -92,8 +123,15 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>36</pointsize>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="styleSheet">
-        <string notr="true">font: 32pt &quot;Sans Serif&quot;;</string>
+        <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(44, 118, 255);</string>
        </property>
        <property name="text">
         <string>종료하기</string>
