@@ -19,9 +19,9 @@
   <widget class="QLabel" name="RFIDlabel">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>450</x>
      <y>20</y>
-     <width>1141</width>
+     <width>901</width>
      <height>501</height>
     </rect>
    </property>
