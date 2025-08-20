@@ -464,8 +464,8 @@ background-color: rgb(1, 180, 245);</string>
   <widget class="QPushButton" name="OKButton">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>710</y>
+     <x>50</x>
+     <y>740</y>
      <width>381</width>
      <height>241</height>
     </rect>
@@ -487,8 +487,8 @@ background-color: rgb(1, 180, 245);</string>
   <widget class="QPushButton" name="CancelButton">
    <property name="geometry">
     <rect>
-     <x>630</x>
-     <y>710</y>
+     <x>470</x>
+     <y>740</y>
      <width>381</width>
      <height>241</height>
     </rect>
@@ -537,10 +537,10 @@ background-color: rgb(1, 180, 245);</string>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>270</y>
+     <x>50</x>
+     <y>220</y>
      <width>351</width>
-     <height>342</height>
+     <height>466</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -548,8 +548,8 @@ background-color: rgb(1, 180, 245);</string>
      <widget class="QLabel" name="UIDlabel_3">
       <property name="font">
        <font>
-        <pointsize>24</pointsize>
-        <bold>true</bold>
+        <pointsize>36</pointsize>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -558,17 +558,14 @@ background-color: rgb(1, 180, 245);</string>
       <property name="text">
        <string>&lt; 읽기 전용 &gt;</string>
       </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
-      </property>
      </widget>
     </item>
     <item>
      <widget class="QLabel" name="namelabel">
       <property name="font">
        <font>
-        <pointsize>24</pointsize>
-        <bold>true</bold>
+        <pointsize>36</pointsize>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -581,8 +578,22 @@ background-color: rgb(1, 180, 245);</string>
     </item>
     <item>
      <widget class="QLineEdit" name="mynamelineEdit">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Sans Serif</family>
+        <pointsize>36</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">font: 24pt &quot;Sans Serif&quot;;
+       <string notr="true">font: 36pt &quot;Sans Serif&quot;;
 background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="readOnly">
@@ -594,8 +605,8 @@ background-color: rgb(255, 255, 255);</string>
      <widget class="QLabel" name="UIDlabel_2">
       <property name="font">
        <font>
-        <pointsize>24</pointsize>
-        <bold>true</bold>
+        <pointsize>36</pointsize>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -608,8 +619,16 @@ background-color: rgb(255, 255, 255);</string>
     </item>
     <item>
      <widget class="QLineEdit" name="myUIDlineEdit">
+      <property name="font">
+       <font>
+        <family>Sans Serif</family>
+        <pointsize>36</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">font: 24pt &quot;Sans Serif&quot;;
+       <string notr="true">font: 36pt &quot;Sans Serif&quot;;
 background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="readOnly">
@@ -621,8 +640,8 @@ background-color: rgb(255, 255, 255);</string>
      <widget class="QLabel" name="budgetlabel_2">
       <property name="font">
        <font>
-        <pointsize>24</pointsize>
-        <bold>true</bold>
+        <pointsize>36</pointsize>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -635,8 +654,16 @@ background-color: rgb(255, 255, 255);</string>
     </item>
     <item>
      <widget class="QLineEdit" name="mybudgetlineEdit">
+      <property name="font">
+       <font>
+        <family>Sans Serif</family>
+        <pointsize>36</pointsize>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
       <property name="styleSheet">
-       <string notr="true">font: 24pt &quot;Sans Serif&quot;;
+       <string notr="true">font: 36pt &quot;Sans Serif&quot;;
 background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="readOnly">
@@ -649,10 +676,10 @@ background-color: rgb(255, 255, 255);</string>
   <widget class="QWidget" name="verticalLayoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>640</x>
-     <y>280</y>
+     <x>530</x>
+     <y>220</y>
      <width>341</width>
-     <height>243</height>
+     <height>331</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -660,8 +687,8 @@ background-color: rgb(255, 255, 255);</string>
      <widget class="QLabel" name="UIDlabel_4">
       <property name="font">
        <font>
-        <pointsize>24</pointsize>
-        <bold>true</bold>
+        <pointsize>36</pointsize>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -670,17 +697,14 @@ background-color: rgb(255, 255, 255);</string>
       <property name="text">
        <string>&lt; 쓰기 가능 &gt;</string>
       </property>
-      <property name="alignment">
-       <set>Qt::AlignmentFlag::AlignCenter</set>
-      </property>
      </widget>
     </item>
     <item>
      <widget class="QLabel" name="budgetlabel">
       <property name="font">
        <font>
-        <pointsize>24</pointsize>
-        <bold>true</bold>
+        <pointsize>36</pointsize>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -694,7 +718,7 @@ background-color: rgb(255, 255, 255);</string>
     <item>
      <widget class="myLineEdit" name="budgetlineEdit">
       <property name="styleSheet">
-       <string notr="true">font: 24pt &quot;Sans Serif&quot;;
+       <string notr="true">font: 36pt &quot;Sans Serif&quot;;
 background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
@@ -703,8 +727,8 @@ background-color: rgb(255, 255, 255);</string>
      <widget class="QLabel" name="UIDlabel">
       <property name="font">
        <font>
-        <pointsize>24</pointsize>
-        <bold>true</bold>
+        <pointsize>36</pointsize>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -718,7 +742,7 @@ background-color: rgb(255, 255, 255);</string>
     <item>
      <widget class="myLineEdit" name="targetUIDlineEdit">
       <property name="styleSheet">
-       <string notr="true">font: 24pt &quot;Sans Serif&quot;;
+       <string notr="true">font: 36pt &quot;Sans Serif&quot;;
 background-color: rgb(255, 255, 255);</string>
       </property>
      </widget>
