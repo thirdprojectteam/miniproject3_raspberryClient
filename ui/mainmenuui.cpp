@@ -24,21 +24,25 @@ void MainMenuUI::on_QuitButton_clicked()
 //예금
 void MainMenuUI::on_DepositButton_clicked()
 {
-    emit changeRFID(2);
+    emit selectQRRFID();
+    // emit changeRFID(2);
 }
 //출금
 void MainMenuUI::on_WithdrawButton_clicked()
 {
-    emit changeRFID(3);
+    emit selectQRRFID();
+    // emit changeRFID(3);
 }
 //조회
 void MainMenuUI::on_BalanceButton_clicked()
 {
-    emit changeRFID(4);
+    emit selectQRRFID();
+    // emit changeRFID(4);
 }
 //송금
 void MainMenuUI::on_SendButton_clicked()
 {
-    emit changeRFID(5);
+    emit selectQRRFID();
+    // emit changeRFID(5);
 }
 

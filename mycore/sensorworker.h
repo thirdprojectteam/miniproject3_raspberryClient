@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QTimer>
-#include <gpiod.h>
+// #include <gpiod.h>
 
 class SensorWorker: public QObject
 {
@@ -20,9 +20,9 @@ signals:
 private slots:
     void readSensor();
 private:
-    gpiod_chip *m_chip;
-    gpiod_line *m_trig;
-    gpiod_line *m_echo;
+    // gpiod_chip *m_chip;
+    // gpiod_line *m_trig;
+    // gpiod_line *m_echo;
     QTimer *m_timer;
     double measureDistance();
 

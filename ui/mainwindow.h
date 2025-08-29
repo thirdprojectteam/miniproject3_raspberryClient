@@ -9,6 +9,8 @@
 #include "senlib/light.h"
 //UI
 #include "mainmenuui.h"
+#include "selectionqrrfid.h"
+#include "qrcodeui.h"
 #include "rfidui.h"
 #include "depositui.h"
 #include "checkui.h"
@@ -40,6 +42,8 @@ private:
 
     //UI
     MainMenuUI *m_MainMenuUI;
+    SelectionUI *m_SelectionUI;
+    QRCodeUI *m_QRCodeUI;
     RFIDUI *m_RFIDUI;
     DepositUI *m_DepositUI;
     CheckUI *m_CheckUI;
