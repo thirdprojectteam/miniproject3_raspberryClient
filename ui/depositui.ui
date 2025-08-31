@@ -62,7 +62,7 @@ background-color: rgb(1, 180, 245);</string>
     <string>취소</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="StatusLabel">
    <property name="enabled">
     <bool>true</bool>
    </property>

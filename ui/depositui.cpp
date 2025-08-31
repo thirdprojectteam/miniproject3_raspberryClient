@@ -36,10 +36,10 @@ void DepositUI::init(){
     ui->budgetlineEdit->setText(QString::number(Backend::getInstance().getBudget()));
     ui->expectlineEdit->setText(QString::number(Backend::getInstance().getBudget()));
 
-//    if(!m_type)
-//        ui->StatusLabel->setText("예금입니다. 원하시는 값을 입력해주세요.");
-//    else
-//        ui->StatusLabel->setText("출금입니다. 원하시는 값을 입력해주세요.");
+    if(!m_type)
+        ui->StatusLabel->setText("ATM  예금");
+    else
+        ui->StatusLabel->setText("ATM  출금");
     clearDigit();
 }
 //send put request
