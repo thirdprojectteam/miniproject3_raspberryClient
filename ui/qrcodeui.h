@@ -9,6 +9,8 @@ namespace Ui {
 class QRCodeUI;
 }
 
+class AWSWebSocketClient;
+
 class QRCodeUI : public QWidget
 {
     Q_OBJECT
@@ -26,11 +28,18 @@ signals:
 private slots:
     void on_backButton_clicked();
     void on_generateButton_clicked();
+    void onQRDataReceived(const QString &data);
+    void onAWSConnected();
+    void onAWSDisconnected();
+    void onAWSError(const QString &error);
 
 private:
     Ui::QRCodeUI *ui;
+    AWSWebSocketClient *m_awsClient;
     QString generateSimpleQRData();
     void displayQRCode(const QString &data);
+    void connectToAWS();
+    void processQRData(const QString &data);
 };
 
 #endif // QRCODEUI_H
