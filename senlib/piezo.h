@@ -3,7 +3,7 @@
 
 #include <QTimer>
 #include <QObject>
-#include <gpiod.h>
+// #include <gpiod.h>
 
 class Piezo: public QObject
 {
@@ -15,8 +15,8 @@ public:
 
 private:
     bool buzzing;
-    gpiod_chip *m_chip;
-    gpiod_line *m_piezo;
+    // gpiod_chip *m_chip;
+    // gpiod_line *m_piezo;
 };
 
 #endif // PIEZO_H
