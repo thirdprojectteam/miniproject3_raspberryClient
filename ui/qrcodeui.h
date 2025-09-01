@@ -19,7 +19,6 @@ public:
     explicit QRCodeUI(QWidget *parent = nullptr);
     ~QRCodeUI();
     
-    void generateQRCode(const QString &data);
     void init();
 
 signals:
@@ -36,7 +35,7 @@ private slots:
 private:
     Ui::QRCodeUI *ui;
     AWSWebSocketClient *m_awsClient;
-    QString generateSimpleQRData();
+    QString clientId;
     void displayQRCode(const QString &data);
     void connectToAWS();
     void processQRData(const QString &data);

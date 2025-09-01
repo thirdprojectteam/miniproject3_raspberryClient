@@ -8,6 +8,8 @@
 #include <QJsonObject>
 #include <QJsonDocument>
 
+#include "QZXing.h"
+
 QRCodeUI::QRCodeUI(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::QRCodeUI)
@@ -33,32 +35,22 @@ QRCodeUI::~QRCodeUI()
 
 void QRCodeUI::init()
 {
-    // QR 코드 데이터 생성 및 표시
-    QString qrData = generateSimpleQRData();
-    displayQRCode(qrData);
-    
     // AWS 서버에 연결
     connectToAWS();
-}
 
-QString QRCodeUI::generateSimpleQRData()
-{
-    // 하드코딩된 QR 데이터
-    QString qrData = "123456789";
-    return qrData;
-}
-
-void QRCodeUI::generateQRCode(const QString &data)
-{
-    // 실제 QR 코드 생성 로직
-    // 여기서는 간단한 시각적 표현을 위해 텍스트와 패턴을 표시
-    displayQRCode(data);
+    // QR 코드 데이터 생성 및 표시
+    displayQRCode(clientId);
 }
 
 void QRCodeUI::displayQRCode(const QString &data)
 {
+    QImage image = QZXing::encodeData(data,
+                                      QZXing::EncoderFormat_QR_CODE,
+                                      QSize(300, 300));
+    QPixmap pixmap = QPixmap::fromImage(image);
+
     // testqr1.png 이미지 로드
-    QPixmap pixmap(":/image/testqr1.png");
+    // QPixmap pixmap(":/image/testqr1.png");
 
     // 이미지가 없을 경우 기본 이미지 표시
     if(pixmap.isNull()) {
@@ -90,7 +82,7 @@ void QRCodeUI::connectToAWS()
 {
     if (!m_awsClient->isConnected()) {
         // 클라이언트 ID 설정 (디바이스 고유 ID나 랜덤 값 사용)
-        QString clientId = QString("raspberry_client_%1").arg(QDateTime::currentMSecsSinceEpoch());
+        clientId = QString("raspberry_client_%1").arg(QDateTime::currentMSecsSinceEpoch());
         m_awsClient->setClientId(clientId);
         
         // AWS 서버에 연결 (기본 URL 사용)
@@ -115,6 +107,9 @@ void QRCodeUI::onQRDataReceived(const QString &data)
     msgBox.setButtonText(QMessageBox::Cancel, "취소");
     msgBox.setIcon(QMessageBox::Information);
     
+    msgBox.setStyleSheet("QMessageBox { color: black; }"
+                         "QMessageBox QLabel { color: black; }");
+
     int ret = msgBox.exec();
     
     if (ret == QMessageBox::Ok) {
