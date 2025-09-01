@@ -35,23 +35,43 @@ void RF522Worker::pollingData(){
         return;
     }
     //UID
-    QString uidStr;
-    for(int i=0; i<m_MFRC522->uid.size; i++){
-        uidStr+=QString::asprintf("%02X",m_MFRC522->uid.uidByte[i]);
-    }
-    //READ Data
+    //QString uidStr;
+    //for(int i=0; i<m_MFRC522->uid.size; i++){
+    //    uidStr+=QString::asprintf("%02X",m_MFRC522->uid.uidByte[i]);
+    //}
+    //READ account Data
     byte readBuffer[18]={0};
     byte size = sizeof(readBuffer);
+    memset(readBuffer,0,sizeof(readBuffer));
+    QString Account;
+    if(m_MFRC522->MIFARE_Read(5,readBuffer,&size)==MFRC522::STATUS_OK){
+        Account = QString::fromUtf8((char*)readBuffer,16).trimmed();
+        int nullIndex = Account.indexOf(QChar('\0'));
+        if(nullIndex!=-1){
+            Account = Account.left(nullIndex);
+        }
+        qDebug()<<"account 읽기 성공"<<Account;
+    }else{
+        qDebug()<<"account 읽기 실패";
+        m_MFRC522->PCD_StopCrypto1();
+        m_MFRC522->PICC_HaltA();
+        return;
+    }
+
+    //READ Name Data
+    memset(readBuffer,0,sizeof(readBuffer));
     if(m_MFRC522->MIFARE_Read(4,readBuffer,&size)==MFRC522::STATUS_OK){
         QString data = QString::fromUtf8((char*)readBuffer,16).trimmed();
         int nullIndex = data.indexOf(QChar('\0'));
         if(nullIndex!=-1){
             data = data.left(nullIndex);
         }
-        emit dataRead(uidStr,data);
-        qDebug()<<"읽기 성공"<<data;
+        emit dataRead(Account,data);
+        qDebug()<<"읽기 성공"<<data<<" "<<Account;
     }else{
         qDebug()<<"읽기 실패";
     }
+
     m_MFRC522->PCD_StopCrypto1();
+    m_MFRC522->PICC_HaltA();
 }
