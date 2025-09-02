@@ -32,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
     sensorThread = new QThread(this);
     worker->moveToThread(sensorThread);
 
-    //debug always on
+    //rfid나 qr 확인되면 불 들어온다.
     m_light = new light(this);
 
     //worker connect delete later, start stop
@@ -84,7 +84,7 @@ MainWindow::MainWindow(QWidget *parent)
             m_light->turnOnLightOnce();
         } else {
             //finish ui
-            changePageHandler(8);
+            changePageHandler(9);
         }
     });
     connect(m_RFIDUI,&RFIDUI::changeWidget,this,&MainWindow::changePageHandler);
@@ -93,13 +93,22 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_SendUI,&SendUI::changeWidget,this,&MainWindow::changePageHandler);
     connect(m_FinishUI,&FinishUI::changeWidget,this,&MainWindow::changePageHandler);
     
+    //나이값 들어오면 처리
+    connect(m_TcpServer,&TcpServer::SwitchUI,[=](){
+        if(Backend::getInstance().getAge()=="elder"){
+            changePageHandler(1);
+        }else{
+            changePageHandler(0);
+        }
+    });
+
     // QRCodeUI connect
     connect(m_QRCodeUI,&QRCodeUI::changeWidget,this,&MainWindow::changePageHandler);
-    connect(m_MainMenuUI,&MainMenuUI::changeRFID,[=](int idx){
-        m_RFIDUI->setidx(idx);
-        m_RFIDUI->rfidThreadStart();
-        changePageHandler(1);
-    });
+    //    connect(m_MainMenuUI,&MainMenuUI::changeRFID,[=](int idx){
+    //        m_RFIDUI->setidx(idx);
+    //        m_RFIDUI->rfidThreadStart();
+    //        changePageHandler(1);
+    //    });
 
     // main menu btn select
     connect(m_MainMenuUI,&MainMenuUI::selectQRRFID,[=](int idx){
@@ -133,8 +142,6 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug() << "RFID Selected";
         changePageHandler(4);  // RFIDUI
     });
-
-    // sensorThread->start();
 }
 
 MainWindow::~MainWindow()

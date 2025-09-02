@@ -1,5 +1,6 @@
 #include "normalmainmenuui.h"
 #include "ui_normalmainmenuui.h"
+#include "mycore/backend.h"
 #include <QPixmap>
 #include <QDir>
 #include <QDebug>
@@ -79,5 +80,10 @@ void NormalMainMenuUI::on_SelectButton_clicked()
 {
     //To Elder UI
     emit selectQRRFID(1);
+}
+
+void NormalMainMenuUI::on_resetButton_clicked()
+{
+    Backend::getInstance().setAge("unknown");
 }
 

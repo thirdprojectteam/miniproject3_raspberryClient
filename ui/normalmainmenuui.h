@@ -36,6 +36,8 @@ private slots:
 
     void on_SelectButton_clicked();
 
+    void on_resetButton_clicked();
+
 private:
     Ui::NormalMainMenuUI *ui;
     QTimer *timer;

@@ -52,10 +52,12 @@ void TcpServer::incomingConnection(qintptr sd) {
                 if (parts.size() >= 1) mask = parts.at(0).trimmed().toInt();
                 if (parts.size() >= 2) ageLabel = parts.at(1).trimmed();
             }
+            qInfo() << "[TCP] ageLabel:" << ageLabel;
             //age label설정 = 초기 1회만
             if(ageLabel!="unknown"&&Backend::getInstance().getAge()=="unknown"){
+                qDebug()<<ageLabel;
                 Backend::getInstance().setAge(ageLabel);
-
+                emit SwitchUI();
             }
 
             if(mask == 1){

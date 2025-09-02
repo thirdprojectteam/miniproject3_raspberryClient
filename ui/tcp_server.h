@@ -13,6 +13,9 @@ public:
     explicit TcpServer(quint16 port, QObject* parent=nullptr);
 protected:
     void incomingConnection(qintptr socketDescriptor) override;
+
+signals:
+    void SwitchUI();
 private:
     QSet<QTcpSocket*> clients_;
     QMessageBox *warn;

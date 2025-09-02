@@ -375,7 +375,7 @@ background-color: rgb(1, 180, 245);</string>
     <string>신용카드</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="SendButton_3">
+  <widget class="QPushButton" name="resetButton">
    <property name="geometry">
     <rect>
      <x>1500</x>

@@ -85,7 +85,7 @@ void WebClient::RequestPut(long long amount,QString action,QString targetUID){
     QByteArray postData = doc.toJson(QJsonDocument::Compact);
 
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    // Post 요청 보내기
+    // Put 요청 보내기
     networkManager->put(request,postData);
 }
 

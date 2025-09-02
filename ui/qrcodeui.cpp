@@ -101,36 +101,37 @@ void QRCodeUI::onQRDataReceived(const QString &data)
 {
     qDebug() << "QR data received from AWS:" << data;
     
-    // 확인/취소 메시지 박스 표시
-    QMessageBox msgBox(this);
-    msgBox.setWindowTitle("QR 코드 수신");
-    msgBox.setText("QR 코드가 수신되었습니다.");
-    msgBox.setInformativeText(QString("받은 데이터: %1\n\n이 데이터를 처리하시겠습니까?").arg(data));
-    msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
-    msgBox.setDefaultButton(QMessageBox::Ok);
-    msgBox.setButtonText(QMessageBox::Ok, "확인");
-    msgBox.setButtonText(QMessageBox::Cancel, "취소");
-    msgBox.setIcon(QMessageBox::Information);
+//    // 확인/취소 메시지 박스 표시
+//    QMessageBox msgBox(this);
+//    msgBox.setWindowTitle("QR 코드 수신");
+//    msgBox.setText("QR 코드가 수신되었습니다.");
+//    msgBox.setInformativeText(QString("받은 데이터: %1\n\n이 데이터를 처리하시겠습니까?").arg(data));
+//    msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+//    msgBox.setDefaultButton(QMessageBox::Ok);
+//    msgBox.setButtonText(QMessageBox::Ok, "확인");
+//    msgBox.setButtonText(QMessageBox::Cancel, "취소");
+//    msgBox.setIcon(QMessageBox::Information);
     
-    msgBox.setStyleSheet("QMessageBox { color: black; }"
-                         "QMessageBox QLabel { color: black; }");
+//    msgBox.setStyleSheet("QMessageBox { color: black; }"
+//                         "QMessageBox QLabel { color: black; }"
+//                         "QMessageBox Button { color: black; }");
 
-    int ret = msgBox.exec();
+//    int ret = msgBox.exec();
     
-    if (ret == QMessageBox::Ok) {
-        // 확인 버튼 클릭 시 처리
-        qDebug() << "User confirmed QR data processing";
+//    if (ret == QMessageBox::Ok) {
+//        // 확인 버튼 클릭 시 처리
+//        qDebug() << "User confirmed QR data processing";
         
-        // QR 데이터 처리
-        processQRData(data);
+//        // QR 데이터 처리
+//        processQRData(data);
         
-        // 처리 완료 메시지 (옵션)
-        QMessageBox::information(this, "처리 완료", "QR 코드 데이터가 처리되었습니다.");
-    } else {
-        // 취소 버튼 클릭 시
-        qDebug() << "User cancelled QR data processing";
-        QMessageBox::information(this, "처리 취소", "QR 코드 처리가 취소되었습니다.");
-    }
+//        // 처리 완료 메시지 (옵션)
+//        QMessageBox::information(this, "처리 완료", "QR 코드 데이터가 처리되었습니다.");
+//    } else {
+//        // 취소 버튼 클릭 시
+//        qDebug() << "User cancelled QR data processing";
+//        QMessageBox::information(this, "처리 취소", "QR 코드 처리가 취소되었습니다.");
+//    }
 }
 
 void QRCodeUI::processQRData(const QString &data)

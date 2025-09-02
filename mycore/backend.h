@@ -32,7 +32,7 @@ private:
     QString m_UID;
     QString m_name;
     long long m_budget;
-    QString m_age;
+    QString m_age="unknown";
 };
 
 #endif // BACKEND_H

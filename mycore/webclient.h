@@ -37,11 +37,15 @@ private slots:
 private:
     WebClient(QObject *parent = nullptr) {}
     ~WebClient(){}
+
     WebClient &operator=(const WebClient &ref){}
     QNetworkAccessManager *networkManager; // 네트워크 요청을 관리하는 객체
-    const QString SERVER_GET_URL = "http://192.168.2.236:8081/api/atm"; // 웹서버의 API 엔드포인트104
-    const QString SERVER_PUT_URL = "http://192.168.2.236:8081/api/atm";     // 예금 출금 송금시 필요함.
-    const QString SERVER_POST_URL = "http://192.168.2.236:8081/api/atm"; // 센서 로그 올리기
+    const QString SERVER_GET_URL = "http://43.220.4.130:3000/api/atm"; // 웹서버의 API 엔드포인트104
+    const QString SERVER_PUT_URL = "http://43.220.4.130:3000/api/atm";     // 예금 출금 송금시 필요함.
+    const QString SERVER_POST_URL = "http://43.220.4.130:3000/api/atm"; // 센서 로그 올리기
+    //    const QString SERVER_GET_URL = "http://43.220.4.130:3000/api/atm"; // 웹서버의 API 엔드포인트104
+//    const QString SERVER_PUT_URL = "http://192.168.2.236:8081/api/atm";     // 예금 출금 송금시 필요함.
+//    const QString SERVER_POST_URL = "http://192.168.2.236:8081/api/atm"; // 센서 로그 올리기
     // 참고: 웹서버의 포트가 다르면 여기를 수정하세요 (예: 8080)
 };
 #endif // WEBCLIENT_H

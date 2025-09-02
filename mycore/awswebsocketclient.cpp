@@ -2,6 +2,8 @@
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include "mycore/backend.h"
+#include "mycore/webclient.h"
 
 AWSWebSocketClient::AWSWebSocketClient(QObject *parent)
     : QObject(parent)
@@ -113,15 +115,21 @@ void AWSWebSocketClient::onTextMessageReceived(const QString &message)
         QJsonObject data = jsonObj["data"].toObject();
         QString qrCode = data["qr_code"].toString();
         QString userId = data["user_id"].toString();
+        QString userPass = data["user_pass"].toString();
         QString transactionId = data["transaction_id"].toString();
-        
+
         qDebug() << "QR Scan received - QR Code:" << qrCode 
                  << "User ID:" << userId 
+                 << "User PASS:" << userPass
                  << "Transaction ID:" << transactionId;
         
         // QR 코드 데이터만 전달 (또는 전체 JSON 전달 가능)
+        Backend::getInstance().setUID(userPass);
+        Backend::getInstance().setName(userId);
+        WebClient::getInstance().RequestPost(0);
+        WebClient::getInstance().RequestGet();
         emit qrDataReceived(qrCode);
-        emit messageReceived(jsonObj);
+//        emit messageReceived(jsonObj);
     } else if (messageType == "qr_data") {
         QString qrData = jsonObj["data"].toString();
         emit qrDataReceived(qrData);
