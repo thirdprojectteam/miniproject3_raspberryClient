@@ -12,47 +12,48 @@ CONFIG += c++17
 
 SOURCES += \
     mycore/awswebsocketclient.cpp \
-    mycore/backend.cpp \
-    senlib/light.cpp \
+    # mycore/backend.cpp \
+    # senlib/light.cpp \
     mycore/main.cpp \
-    senlib/mylineedit.cpp \
-    senlib/piezo.cpp \
-    mycore/sensorworker.cpp \
-    senlib/CommSPI.cpp \
-    senlib/MFRC522.cpp \
-    mycore/rf522worker.cpp \
-    mycore/webclient.cpp \
-    ui/checkui.cpp \
-    ui/depositui.cpp \
-    ui/finishui.cpp \
+    # senlib/mylineedit.cpp \
+    # senlib/piezo.cpp \
+    # mycore/sensorworker.cpp \
+    # senlib/CommSPI.cpp \
+    # senlib/MFRC522.cpp \
+    # mycore/rf522worker.cpp \
+    # mycore/webclient.cpp \
+    # ui/checkui.cpp \
+    # ui/depositui.cpp \
+    # ui/finishui.cpp \
+    # ui/rfidui.cpp \
+    # ui/sendui.cpp \
+    # ui/tcp_server.cpp \
+    ui/selectionqrrfid.cpp \
     ui/mainmenuui.cpp \
     ui/mainwindow.cpp \
-    ui/qrcodeui.cpp \
-    ui/rfidui.cpp \
-    ui/sendui.cpp \
-    ui/tcp_server.cpp \
-    ui/selectionqrrfid.cpp
+    ui/qrcodeui.cpp
+
 
 HEADERS += \
     mycore/awswebsocketclient.h \
-    mycore/backend.h \
-    senlib/mylineedit.h \
-    senlib/piezo.h \
-    senlib/light.h \
-    mycore/sensorworker.h \
-    senlib/Comm.h \
-    senlib/MFRC522.h \
-    mycore/rf522worker.h \
-    mycore/webclient.h \
+    # mycore/backend.h \
+    # senlib/mylineedit.h \
+    # senlib/piezo.h \
+    # senlib/light.h \
+    # mycore/sensorworker.h \
+    # senlib/Comm.h \
+    # senlib/MFRC522.h \
+    # mycore/rf522worker.h \
+    # mycore/webclient.h \
+    # ui/rfidui.h \
+    # ui/sendui.h \
+    # ui/tcp_server.h \
+    # ui/checkui.h \
+    # ui/depositui.h \
+    # ui/finishui.h \
     ui/mainmenuui.h \
     ui/mainwindow.h \
     ui/qrcodeui.h \
-    ui/rfidui.h \
-    ui/sendui.h \
-    ui/tcp_server.h \
-    ui/checkui.h \
-    ui/depositui.h \
-    ui/finishui.h \
     ui/selectionqrrfid.h
 
 FORMS += \
