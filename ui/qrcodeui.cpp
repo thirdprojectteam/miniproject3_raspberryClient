@@ -108,7 +108,8 @@ void QRCodeUI::onQRDataReceived(const QString &data)
     msgBox.setIcon(QMessageBox::Information);
     
     msgBox.setStyleSheet("QMessageBox { color: black; }"
-                         "QMessageBox QLabel { color: black; }");
+                         "QMessageBox QLabel { color: black; }"
+                         "QPushButton { color: black; }");
 
     int ret = msgBox.exec();
     
@@ -118,13 +119,6 @@ void QRCodeUI::onQRDataReceived(const QString &data)
         
         // QR 데이터 처리
         processQRData(data);
-        
-        // 처리 완료 메시지 (옵션)
-        QMessageBox::information(this, "처리 완료", "QR 코드 데이터가 처리되었습니다.");
-    } else {
-        // 취소 버튼 클릭 시
-        qDebug() << "User cancelled QR data processing";
-        QMessageBox::information(this, "처리 취소", "QR 코드 처리가 취소되었습니다.");
     }
 }
 
