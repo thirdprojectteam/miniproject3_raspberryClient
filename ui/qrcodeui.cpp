@@ -35,8 +35,13 @@ QRCodeUI::~QRCodeUI()
 
 void QRCodeUI::init()
 {
-    // AWS 서버에 연결
-    connectToAWS();
+    // AWS 연결은 MainMenuUI에서 이미 처리됨
+    // 클라이언트 ID 가져오기
+    if (m_awsClient->isConnected()) {
+        clientId = m_awsClient->getClientId();
+    } else {
+        clientId = QString("raspberry_client_%1").arg(QDateTime::currentMSecsSinceEpoch());
+    }
 
     // QR 코드 데이터 생성 및 표시
     displayQRCode(clientId);
@@ -78,19 +83,8 @@ void QRCodeUI::on_generateButton_clicked()
     // 버튼이 제거되었으므로 이 함수는 사용되지 않음
 }
 
-void QRCodeUI::connectToAWS()
-{
-    if (!m_awsClient->isConnected()) {
-        // 클라이언트 ID 설정 (디바이스 고유 ID나 랜덤 값 사용)
-        clientId = QString("raspberry_client_%1").arg(QDateTime::currentMSecsSinceEpoch());
-        m_awsClient->setClientId(clientId);
-        
-        // AWS 서버에 연결 (기본 URL 사용)
-        m_awsClient->connectToAWS();
-        
-        qDebug() << "Connecting to AWS server";
-    }
-}
+// AWS 연결은 이제 MainMenuUI에서 처리됨
+// void QRCodeUI::connectToAWS() 함수 제거
 
 void QRCodeUI::onQRDataReceived(const QString &data)
 {

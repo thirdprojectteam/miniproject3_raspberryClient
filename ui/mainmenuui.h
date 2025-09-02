@@ -8,6 +8,8 @@ namespace Ui {
 class MainMenuUI;
 }
 
+class AWSWebSocketClient;
+
 class MainMenuUI : public QWidget
 {
     Q_OBJECT
@@ -29,9 +31,17 @@ private slots:
     void on_BalanceButton_clicked();
 
     void on_SendButton_clicked();
+    
+    void onAWSConnected();
+    void onAWSDisconnected();
+    void onAWSError(const QString &error);
 
 private:
+    void connectToAWS();
+    
     Ui::MainMenuUI *ui;
+    AWSWebSocketClient *m_awsClient;
+    QString clientId;
 };
 
 #endif // MAINMENUUI_H

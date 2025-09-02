@@ -22,6 +22,7 @@ public:
     void sendQRData(const QString &qrData);
     bool isConnected() const { return m_isConnected; }
     void setClientId(const QString &clientId) { m_clientId = clientId; }
+    QString getClientId() const { return m_clientId; }
 
 signals:
     void connected();

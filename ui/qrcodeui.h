@@ -37,7 +37,6 @@ private:
     AWSWebSocketClient *m_awsClient;
     QString clientId;
     void displayQRCode(const QString &data);
-    void connectToAWS();
     void processQRData(const QString &data);
 };
 
