@@ -119,6 +119,12 @@ void QRCodeUI::onQRDataReceived(const QString &data)
         
         // QR 데이터 처리
         processQRData(data);
+        
+        // WebSocket 연결 해제
+        if (m_awsClient->isConnected()) {
+            m_awsClient->disconnectFromAWS();
+            qDebug() << "WebSocket disconnected after QR confirmation";
+        }
     }
 }
 
