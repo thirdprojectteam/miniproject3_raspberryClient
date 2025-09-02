@@ -22,6 +22,7 @@ void FinishUI::init(){
 
 void FinishUI::on_OKButton_clicked()
 {
+    Backend::getInstance().setAge("unknown");
     emit changeWidget(0);
 }
 

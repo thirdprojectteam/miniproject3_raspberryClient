@@ -22,6 +22,8 @@ public:
     void setBudget(long long budget){m_budget = budget;}
     void setAge(QString age){m_age = age;}
 
+    //next UI;
+    int nxtUI = 0;
 private:
     Backend(QObject* parent = nullptr) {}
     Backend(const Backend&) {}

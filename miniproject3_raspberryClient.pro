@@ -27,6 +27,7 @@ SOURCES += \
     ui/finishui.cpp \
     ui/mainmenuui.cpp \
     ui/mainwindow.cpp \
+    ui/normalmainmenuui.cpp \
     ui/qrcodeui.cpp \
     ui/rfidui.cpp \
     ui/sendui.cpp \
@@ -46,6 +47,7 @@ HEADERS += \
     mycore/webclient.h \
     ui/mainmenuui.h \
     ui/mainwindow.h \
+    ui/normalmainmenuui.h \
     ui/qrcodeui.h \
     ui/rfidui.h \
     ui/sendui.h \
@@ -61,6 +63,7 @@ FORMS += \
     ui/finishui.ui \
     ui/mainmenuui.ui \
     ui/mainwindow.ui \
+    ui/normalmainmenuui.ui \
     ui/qrcodeui.ui \
     ui/rfidui.ui \
     ui/sendui.ui \
@@ -72,7 +75,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 # using library
-# LIBS += -lgpiod
+LIBS += -lgpiod
 
 RESOURCES += \
     image.qrc

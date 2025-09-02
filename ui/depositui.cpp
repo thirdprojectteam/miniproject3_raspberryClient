@@ -82,6 +82,9 @@ void DepositUI::appendDigit(int num){
 
 void DepositUI::on_CancelButton_clicked()
 {
-    emit changeWidget(0);
+    if(Backend::getInstance().getAge()!="elder")
+        emit changeWidget(0);
+    else
+        emit changeWidget(1);
 }
 

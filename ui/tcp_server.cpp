@@ -43,7 +43,6 @@ void TcpServer::incomingConnection(qintptr sd) {
                 warn->setText("\n\n\n\n얼굴 인식 불가");
                 warn->setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowStaysOnTopHint);
                 warn->setStyleSheet("QLabel {font-size: 48pt;qproperty-alignment:AlignCenter;}");
-
             }
             int mask = -1;
             QString ageLabel = "unknown";
@@ -53,11 +52,11 @@ void TcpServer::incomingConnection(qintptr sd) {
                 if (parts.size() >= 1) mask = parts.at(0).trimmed().toInt();
                 if (parts.size() >= 2) ageLabel = parts.at(1).trimmed();
             }
-            //age label설정
-            if(Backend::getInstance().getAge()=="unknown"){
+            //age label설정 = 초기 1회만
+            if(ageLabel!="unknown"&&Backend::getInstance().getAge()=="unknown"){
                 Backend::getInstance().setAge(ageLabel);
+
             }
-            qDebug()<<ageLabel;
 
             if(mask == 1){
                 qDebug() << "face ok";
@@ -79,7 +78,6 @@ void TcpServer::incomingConnection(qintptr sd) {
                     warn->move(center);
                 });
             }
-
         }
     });
     connect(sock, &QTcpSocket::disconnected, this, [this, sock](){

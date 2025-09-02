@@ -82,6 +82,9 @@ void RFIDUI::on_cancelButton_clicked()
         rfidThread->quit();
     }
     //돌아가기
-    emit changeWidget(0);
+    if(Backend::getInstance().getAge()!="elder")
+        emit changeWidget(0);
+    else
+        emit changeWidget(1);
 }
 

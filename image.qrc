@@ -2,5 +2,8 @@
     <qresource prefix="/image">
         <file>rfid.png</file>
         <file>testqr1.png</file>
+        <file>ad_1.png</file>
+        <file>ad_2.png</file>
+        <file>ad_3.png</file>
     </qresource>
 </RCC>

@@ -37,6 +37,9 @@ void CheckUI::on_SendButton_clicked()
 
 void CheckUI::on_QuitButton_clicked()
 {
-    emit changeWidget(0);
+    if(Backend::getInstance().getAge()!="elder")
+        emit changeWidget(0);
+    else
+        emit changeWidget(1);
 }
 

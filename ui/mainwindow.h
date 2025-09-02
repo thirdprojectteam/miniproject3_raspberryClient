@@ -8,6 +8,7 @@
 #include "senlib/piezo.h"
 #include "senlib/light.h"
 //UI
+#include "normalmainmenuui.h"
 #include "mainmenuui.h"
 #include "selectionqrrfid.h"
 #include "qrcodeui.h"
@@ -49,6 +50,7 @@ private:
     CheckUI *m_CheckUI;
     SendUI *m_SendUI;
     FinishUI *m_FinishUI;
+    NormalMainMenuUI *m_NormalMainMenuUI;
     //
     TcpServer *m_TcpServer;
 };

@@ -1,6 +1,7 @@
 #include "qrcodeui.h"
 #include "ui_qrcodeui.h"
 #include "../mycore/awswebsocketclient.h"
+#include "mycore/backend.h"
 #include <QPainter>
 #include <QDateTime>
 #include <QDebug>
@@ -70,7 +71,11 @@ void QRCodeUI::displayQRCode(const QString &data)
 
 void QRCodeUI::on_backButton_clicked()
 {
-    emit changeWidget(0); // MainMenuUI로 돌아가기
+    // goto mainmenu
+    if(Backend::getInstance().getAge()!="elder")
+        emit changeWidget(0);
+    else
+        emit changeWidget(1);
 }
 
 void QRCodeUI::on_generateButton_clicked()

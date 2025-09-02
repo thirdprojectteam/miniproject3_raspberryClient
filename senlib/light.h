@@ -3,7 +3,7 @@
 
 #include <QTimer>
 #include <QObject>
-// #include <gpiod.h>
+#include <gpiod.h>
 
 class light:public QObject
 {
@@ -15,8 +15,8 @@ public:
 
 private:
     bool lighton;
-    // gpiod_chip *m_chip;
-    // gpiod_line *m_gpio;
+     gpiod_chip *m_chip;
+     gpiod_line *m_gpio;
 };
 
 #endif // LIGHT_H

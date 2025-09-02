@@ -17,7 +17,7 @@ public:
     ~MainMenuUI();
 signals:
     void changeRFID(int index);
-    void selectQRRFID();
+    void selectQRRFID(int index);
 
 private slots:
     void on_QuitButton_clicked();
@@ -29,6 +29,8 @@ private slots:
     void on_BalanceButton_clicked();
 
     void on_SendButton_clicked();
+
+    void on_ChangeButton_clicked();
 
 private:
     Ui::MainMenuUI *ui;

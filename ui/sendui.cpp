@@ -70,6 +70,9 @@ void SendUI::on_OKButton_clicked()
 
 void SendUI::on_CancelButton_clicked()
 {
-    emit changeWidget(0);
+    if(Backend::getInstance().getAge()!="elder")
+        emit changeWidget(0);
+    else
+        emit changeWidget(1);
 }
 

@@ -61,24 +61,30 @@ MainWindow::MainWindow(QWidget *parent)
     m_CheckUI = new CheckUI(this);
     m_SendUI = new SendUI(this);
     m_FinishUI = new FinishUI(this);
+    m_NormalMainMenuUI = new NormalMainMenuUI(this);
 
     //add ui to stackedWidget
-    ui->mainStackedWidget->addWidget(m_MainMenuUI);  // 0
-    ui->mainStackedWidget->addWidget(m_SelectionUI); // 1
-    ui->mainStackedWidget->addWidget(m_QRCodeUI);    // 2
-    ui->mainStackedWidget->addWidget(m_RFIDUI);      // 3
-    ui->mainStackedWidget->addWidget(m_DepositUI);   // 4
-    ui->mainStackedWidget->addWidget(m_CheckUI);     // 5
-    ui->mainStackedWidget->addWidget(m_SendUI);      // 6
-    ui->mainStackedWidget->addWidget(m_FinishUI);    // 7
+    ui->mainStackedWidget->addWidget(m_NormalMainMenuUI); // 0
+    ui->mainStackedWidget->addWidget(m_MainMenuUI);  // 1
+
+    ui->mainStackedWidget->addWidget(m_SelectionUI); // 2
+    ui->mainStackedWidget->addWidget(m_QRCodeUI);    // 3
+    ui->mainStackedWidget->addWidget(m_RFIDUI);      // 4
+    ui->mainStackedWidget->addWidget(m_DepositUI);   // 5
+                                                     // 5-2 = minus
+    ui->mainStackedWidget->addWidget(m_CheckUI);     // 6
+    ui->mainStackedWidget->addWidget(m_SendUI);      // 7
+    ui->mainStackedWidget->addWidget(m_FinishUI);    // 8
 
     //connect ChangeWidgetUI
     connect(&WebClient::getInstance(),&WebClient::onGetSuccess,this,[=](){
-        if(ui->mainStackedWidget->currentIndex()==1){
-            changePageHandler(m_RFIDUI->getidx());
+        if(ui->mainStackedWidget->currentIndex()== 3||ui->mainStackedWidget->currentIndex()== 4){
+            //nxtUI -> dep,send,check
+            changePageHandler(Backend::getInstance().nxtUI);
             m_light->turnOnLightOnce();
         } else {
-            changePageHandler(6);
+            //finish ui
+            changePageHandler(8);
         }
     });
     connect(m_RFIDUI,&RFIDUI::changeWidget,this,&MainWindow::changePageHandler);
@@ -95,22 +101,37 @@ MainWindow::MainWindow(QWidget *parent)
         changePageHandler(1);
     });
 
-    connect(m_MainMenuUI,&MainMenuUI::selectQRRFID,[=](){
-        changePageHandler(1);  // SelectionUI로 이동
+    // main menu btn select
+    connect(m_MainMenuUI,&MainMenuUI::selectQRRFID,[=](int idx){
+        if(idx==0){
+            changePageHandler(idx);
+        }else{
+            Backend::getInstance().nxtUI=idx;
+            changePageHandler(2);  // SelectionUI로 이동
+        }
+    });
+
+    // normal main menu btn select
+    connect(m_NormalMainMenuUI,&NormalMainMenuUI::selectQRRFID,[=](int idx){
+        if(idx==1){
+            changePageHandler(idx);
+        }else{
+            Backend::getInstance().nxtUI=idx;
+            changePageHandler(2);  // SelectionUI로 이동
+        }
     });
     
     // SelectionUI에서 QR 또는 RFID 선택 시 처리
     connect(m_SelectionUI,&SelectionUI::qrSelected,[=](){
         // QR 선택 시 처리
         qDebug() << "QR Selected";
-        m_QRCodeUI->init();
-        changePageHandler(2);  // QRCodeUI로 이동
+        changePageHandler(3);  // QRCodeUI로 이동
     });
     
     connect(m_SelectionUI,&SelectionUI::rfidSelected,[=](){
         // RFID 선택 시 처리  
         qDebug() << "RFID Selected";
-        changePageHandler(0);  // MainMenuUI로 돌아가기 (RFID UI가 비활성화되어 있으므로)
+        changePageHandler(4);  // RFIDUI
     });
 
     // sensorThread->start();
@@ -120,38 +141,48 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
+//0 normal 1 elder 2 select 3 qrcode 4 rfid 5 depos 6 with 7 check 8 send 9 fin
 void MainWindow::changePageHandler(int idx){
-    // if(idx==0){
-    //     //nothing happen here backend clear all?
-    // }else if(idx ==1){
-    //     m_RFIDUI->init();
-    // }else if(idx ==2){
-    //     m_DepositUI->setType(0);
-    //     m_DepositUI->init();
-    // }else if(idx ==3){
-    //     idx=2;
-    //     m_DepositUI->setType(1);
-    //     m_DepositUI->init();
-    // }else if(idx==4){
-    //     idx=3;
-    //     m_CheckUI->init();
-    // }else if(idx==5){
-    //     idx=4;
-    //     m_SendUI->init();
-    // }else if(idx==6){
-    //     idx=5;
-    //     m_FinishUI->init();
-    // }
-    
-    // SelectionQRRFID 추가
     if(idx==0){
+        //normal
         //nothing happen here backend clear all?
-    }else if(idx ==1){
-        // SelectionQRRFID page - no init needed
-    }else if(idx ==2){
-        // QRCodeUI page
-    }
+        Backend::getInstance().nxtUI=0;
+     }else if(idx ==1){
+        //elder
+        //nothing happen here backend clear all?
+        Backend::getInstance().nxtUI=0;
+     }else if(idx ==2){
+        //selection UI
+
+     }else if(idx==3){
+        //QRcode UI
+         m_QRCodeUI->init();
+     }else if(idx ==4){
+        //rfid ui
+        m_RFIDUI->init();
+        m_RFIDUI->rfidThreadStart();
+     }else if(idx ==5){
+        //deposit ui
+        m_DepositUI->setType(0);
+        m_DepositUI->init();
+     }else if(idx ==6){
+        //withdraw ui
+        idx--;
+        m_DepositUI->setType(1);
+        m_DepositUI->init();
+     }else if(idx==7){
+        //check ui
+        idx--;
+        m_CheckUI->init();
+     }else if(idx==8){
+        //send ui
+        idx--;
+        m_SendUI->init();
+     }else if(idx==9){
+        //finish ui
+        idx--;
+        m_FinishUI->init();
+     }
     
     ui->mainStackedWidget->setCurrentIndex(idx);
 }
