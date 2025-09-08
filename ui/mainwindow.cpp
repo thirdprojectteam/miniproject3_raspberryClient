@@ -32,9 +32,6 @@ MainWindow::MainWindow(QWidget *parent)
     sensorThread = new QThread(this);
     worker->moveToThread(sensorThread);
 
-    //rfid나 qr 확인되면 불 들어온다.
-    m_light = new light(this);
-
     //worker connect delete later, start stop
     connect(sensorThread,&QThread::started,worker,&SensorWorker::start);
     connect(worker,&SensorWorker::sensorValueReady,this,[=](double dist){
@@ -104,10 +101,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_TcpServer,&TcpServer::PiezoOnce,[=](){
         if(Backend::getInstance().getAge()=="elder"){
             //buzzer low
-            m_piezo->tone(9000.0, 1000);
+            m_piezo->tone(1000.0, 1000);
         }else{
             //buzzer high
-            m_piezo->tone(13000.0, 1000);
+            m_piezo->tone(2000.0, 1000);
         }
     });
 

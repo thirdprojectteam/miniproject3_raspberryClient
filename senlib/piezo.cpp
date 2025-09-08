@@ -27,6 +27,7 @@ Piezo::Piezo(QObject *parent)
 }
 
 Piezo::~Piezo(){
+    qDebug()<<"Piezo deleted!";
     stop();
 }
 
@@ -52,8 +53,9 @@ void Piezo::turnOnBuzzerOnce(){
 }
 
 void Piezo::tone(double freq_hz, int duration_ms, int duty_percent) {
+    qDebug()<<"tone";
     if (!pigpio_ok_ ||freq_hz <= 0 || duration_ms <= 0) return;
-
+    qDebug()<<"tone2";
     if (duty_percent < 0) duty_percent = 0;
     if (duty_percent > 1000) duty_percent = 1000;
 
