@@ -75,7 +75,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 # using library
-LIBS += -lgpiod
+LIBS += -lgpiod -lpigpio -lrt
 
 RESOURCES += \
     image.qrc
