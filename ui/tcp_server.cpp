@@ -65,6 +65,7 @@ void TcpServer::incomingConnection(qintptr sd) {
                 warn->done(0);
             }else{
                 qDebug() << "don't see face";
+                emit PiezoOnce();
                 if(!(warn->isVisible()))
                     warn->open();
                 QTimer::singleShot(0,warn,[this]{

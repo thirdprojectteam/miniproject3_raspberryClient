@@ -79,6 +79,7 @@ void NormalMainMenuUI::on_QuitButton_clicked()
 void NormalMainMenuUI::on_SelectButton_clicked()
 {
     //To Elder UI
+    Backend::getInstance().setAge("elder");
     emit selectQRRFID(1);
 }
 

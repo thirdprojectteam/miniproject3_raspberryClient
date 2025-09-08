@@ -16,6 +16,7 @@ protected:
 
 signals:
     void SwitchUI();
+    void PiezoOnce();
 private:
     QSet<QTcpSocket*> clients_;
     QMessageBox *warn;

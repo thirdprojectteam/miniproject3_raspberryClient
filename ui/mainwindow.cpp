@@ -101,6 +101,15 @@ MainWindow::MainWindow(QWidget *parent)
             changePageHandler(0);
         }
     });
+    connect(m_TcpServer,&TcpServer::PiezoOnce,[=](){
+        if(Backend::getInstance().getAge()=="elder"){
+            //buzzer low
+            m_piezo->tone(9000.0, 1000);
+        }else{
+            //buzzer high
+            m_piezo->tone(13000.0, 1000);
+        }
+    });
 
     // QRCodeUI connect
     connect(m_QRCodeUI,&QRCodeUI::changeWidget,this,&MainWindow::changePageHandler);

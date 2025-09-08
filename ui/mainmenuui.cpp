@@ -50,6 +50,7 @@ void MainMenuUI::on_SendButton_clicked()
 //ui change
 void MainMenuUI::on_ChangeButton_clicked()
 {
+    Backend::getInstance().setAge("young");
     emit selectQRRFID(0);
 }
 
