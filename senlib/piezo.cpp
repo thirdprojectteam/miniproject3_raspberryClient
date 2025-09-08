@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include "mycore/webclient.h"
 
-#define piezo_pin 17
+#define piezo_pin 18
 
 static void sleep_ns(long ns) {
     timespec ts;
@@ -58,14 +58,17 @@ void Piezo::turnOnBuzzerOnce(){
     qDebug()<<"entered"<<buzzing;
     stop();             // 다른 톤 재생 중이면 먼저 중지
     ensureRequested();
-    if (!m_piezo) return;
+    if (buzzing) return;
     gpiod_line_set_value(m_piezo, 1);
+    buzzing=true;
     // 1000ms 대기 (간단히 usleep)
-    usleep(1000 * 1000);
-    gpiod_line_set_value(m_piezo, 0);
-
-    // 후처리 콜백
-    WebClient::getInstance().RequestPost(1);
+    QTimer::singleShot(1000,this,[this](){
+        gpiod_line_set_value(m_piezo,0);
+        gpiod_line_release(m_piezo);
+        buzzing=false;
+        // 후처리 콜백
+        WebClient::getInstance().RequestPost(1);
+    });
 }
 
 void Piezo::tone(double freq_hz, int duration_ms, int duty_percent) {

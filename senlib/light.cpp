@@ -1,6 +1,6 @@
 #include "light.h"
 #include <QDebug>
-#define light_pin 18
+#define light_pin 17
 
 light::light(QObject *parent)
     :QObject(parent)

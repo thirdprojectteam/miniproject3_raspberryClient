@@ -138,6 +138,12 @@ MainWindow::MainWindow(QWidget *parent)
             changePageHandler(2);  // SelectionUI로 이동
         }
     });
+    connect(m_NormalMainMenuUI,&NormalMainMenuUI::piezo_low,[=](){
+        m_piezo->tone(1000.0, 1000);
+    });
+    connect(m_NormalMainMenuUI,&NormalMainMenuUI::piezo_high,[=](){
+        m_piezo->tone(2000.0, 1000);
+    });
     
     // SelectionUI에서 QR 또는 RFID 선택 시 처리
     connect(m_SelectionUI,&SelectionUI::qrSelected,[=](){

@@ -28,7 +28,7 @@ private:
     gpiod_chip *m_chip;
     gpiod_line *m_piezo;
 
-    int m_gpio = 17;
+    int m_gpio = 18;
 
     std::atomic_bool playing_{false};
     std::thread worker_;

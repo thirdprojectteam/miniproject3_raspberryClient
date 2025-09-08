@@ -88,3 +88,15 @@ void NormalMainMenuUI::on_resetButton_clicked()
     Backend::getInstance().setAge("unknown");
 }
 
+void NormalMainMenuUI::on_WithdrawButton_3_clicked()
+{
+    //for debug
+    emit piezo_low();
+}
+
+void NormalMainMenuUI::on_WithdrawButton_2_clicked()
+{
+    //for debug
+    emit piezo_high();
+}
+

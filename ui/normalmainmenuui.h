@@ -20,6 +20,8 @@ public:
 
 signals:
     void selectQRRFID(int index);
+    void piezo_low();
+    void piezo_high();
 
 private slots:
     void changeImage();
@@ -37,6 +39,10 @@ private slots:
     void on_SelectButton_clicked();
 
     void on_resetButton_clicked();
+
+    void on_WithdrawButton_3_clicked();
+
+    void on_WithdrawButton_2_clicked();
 
 private:
     Ui::NormalMainMenuUI *ui;
